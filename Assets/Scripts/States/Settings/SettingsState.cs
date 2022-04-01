@@ -1,6 +1,7 @@
 ﻿using Cerberus;
 using LudumDare50.Client.Infrastructure;
-using LudumDare50.Client.ViewModels.MainMenu;
+using LudumDare50.Client.ViewModels.Settings;
+using UnityEngine;
 using Zenject;
 
 namespace LudumDare50.Client.States.Settings
@@ -23,8 +24,11 @@ namespace LudumDare50.Client.States.Settings
         public override void OnEnter()
         {
             //_screenService.ClearScreen();
-            _screenService.TryGetViewModel<MainMenuViewModel>(out var vm);
-            vm.GameName = "Changed Name";
+            _screenService.SetActiveScreen<SettingsViewModel, SettingsViewModel.PrepareData>(new SettingsViewModel.PrepareData()
+            {
+                Resolutions = Screen.resolutions,
+                SelectedResolution = Screen.currentResolution
+            });
         }
     }
 }

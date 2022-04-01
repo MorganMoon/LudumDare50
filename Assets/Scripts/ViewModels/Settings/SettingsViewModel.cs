@@ -1,10 +1,15 @@
+using Cerberus;
+using LudumDare50.Client.States.Settings;
 using UnityEngine;
+using Zenject;
 using static LudumDare50.Client.ViewModels.Settings.SettingsViewModel;
 
 namespace LudumDare50.Client.ViewModels.Settings
 {
     public class SettingsViewModel : ViewModel<PrepareData>
     {
+        private readonly IStateController<SettingsStateEvent> _settingsStateController;
+
         private Resolution _selectedResolution;
         public Resolution SelectedResolution
         {
@@ -36,6 +41,22 @@ namespace LudumDare50.Client.ViewModels.Settings
             }
         }
 
+        private bool _isFullScreen;
+        public bool IsFullScreen
+        {
+            get => _isFullScreen;
+            set
+            {
+                if(_isFullScreen == value)
+                {
+                    return;
+                }
+                _isFullScreen = value;
+                OnPropertyChanged();
+                ChangesMade = true;
+            }
+        }
+
         private bool _changesMade = false;
         public bool ChangesMade
         {
@@ -51,31 +72,47 @@ namespace LudumDare50.Client.ViewModels.Settings
             }
         }
 
+        [Inject]
+        public SettingsViewModel(IStateController<SettingsStateEvent> settingsStateController)
+        {
+            _settingsStateController = settingsStateController;
+        }
+
         public void OnResolutionSelected(int index)
         {
+            SelectedResolution = ResolutionEntries[index];
             ChangesMade = true;
         }
 
         public void OnApplyButtonPressed()
         {
+            if(!ChangesMade)
+            {
+                return;
+            }
 
+            Screen.SetResolution(SelectedResolution.width, SelectedResolution.height, IsFullScreen, SelectedResolution.refreshRate);
+
+            ChangesMade = false;
         }
 
         public void OnBackButtonPressed()
         {
-
+            _settingsStateController.TriggerEvent(SettingsStateEvent.GoBack);
         }
 
         public override void Prepare(PrepareData parameter)
         {
             ChangesMade = false;
             ResolutionEntries = parameter.Resolutions;
+            _isFullScreen = parameter.IsFullScreen;
         }
 
         public class PrepareData
         {
             public Resolution[] Resolutions { get; set; }
             public Resolution SelectedResolution { get; set; }
+            public bool IsFullScreen { get; set; }
         }
     }
 }

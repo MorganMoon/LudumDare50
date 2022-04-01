@@ -27,7 +27,8 @@ namespace LudumDare50.Client.States.Settings
             _screenService.SetActiveScreen<SettingsViewModel, SettingsViewModel.PrepareData>(new SettingsViewModel.PrepareData()
             {
                 Resolutions = Screen.resolutions,
-                SelectedResolution = Screen.currentResolution
+                SelectedResolution = Screen.currentResolution,
+                IsFullScreen = Screen.fullScreen
             });
         }
     }

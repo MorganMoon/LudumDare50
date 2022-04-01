@@ -56,8 +56,8 @@ namespace LudumDare50.Client.Infrastructure
                 if(_instantiatedTemplates.TryGetValue(viewModelToRemove, out var view))
                 {
                     _instantiatedTemplates.Remove(viewModelToRemove);
-                    var animator = view.TransitionAnimator;
-                    if(animator != null || !animator.Equals(null))
+                    var animator = view?.TransitionAnimator;
+                    if(animator != null && !animator.Equals(null))
                     {
                         StartCoroutine(ExitAnimation(animator, view.GameObject, viewModelToRemove));
                     }

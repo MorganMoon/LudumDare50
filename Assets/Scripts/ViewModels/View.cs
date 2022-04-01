@@ -95,11 +95,11 @@ namespace LudumDare50.Client.ViewModels
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             var value = GetPropertyValue<object>(e.PropertyName);
-            if(value is string stringValue && _bindings.TryGetValue(e.PropertyName, out var bindings))
+            if(_bindings.TryGetValue(e.PropertyName, out var bindings))
             {
                 foreach(var binding in bindings)
                 {
-                    binding?.Invoke(stringValue);
+                    binding?.Invoke(value);
                 }
             }
         }

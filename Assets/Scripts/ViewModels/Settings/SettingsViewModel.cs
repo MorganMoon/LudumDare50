@@ -53,7 +53,7 @@ namespace LudumDare50.Client.ViewModels.Settings
 
         public void OnResolutionSelected(int index)
         {
-
+            ChangesMade = true;
         }
 
         public void OnApplyButtonPressed()

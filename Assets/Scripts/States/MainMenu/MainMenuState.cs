@@ -23,7 +23,8 @@ namespace LudumDare50.Client.States.MainMenu
 
         public override void OnEnter()
         {
-            _screenService.SetActiveScreen<MainMenuViewModel>();
+            var mainMenuViewModel = _screenService.SetActiveScreen<MainMenuViewModel>();
+            mainMenuViewModel.GameName = "test";
         }
     }
 }

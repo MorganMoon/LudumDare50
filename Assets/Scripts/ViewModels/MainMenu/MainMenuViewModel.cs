@@ -10,6 +10,22 @@ namespace LudumDare50.Client.ViewModels.MainMenu
         private readonly IStateController<StartupStateEvent> _startupStateController;
         private readonly IStateController<MainMenuStateEvent> _mainMenuStateController;
 
+        private string _gameName;
+        public string GameName
+        {
+            get => _gameName;
+            set
+            {
+                if(_gameName == value)
+                {
+                    return;
+                }
+
+                _gameName = value;
+                OnPropertyChanged();
+            }
+        }
+
         [Inject]
         public MainMenuViewModel(IStateController<StartupStateEvent> startupStateController, IStateController<MainMenuStateEvent> mainMenuStateController)
         {

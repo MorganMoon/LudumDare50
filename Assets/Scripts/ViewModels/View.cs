@@ -25,13 +25,13 @@ namespace LudumDare50.Client.ViewModels
 
     public abstract class View<T> : View where T : ViewModel
     {
-        private readonly Dictionary<string, List<Action<string>>> _stringBindings = new Dictionary<string, List<Action<string>>>();
+        private readonly Dictionary<string, List<Action<object>>> _bindings = new Dictionary<string, List<Action<object>>>();
 
         private T _viewModel;
         public T ViewModel
         {
             get => _viewModel;
-            private set
+            set
             {
                 if(_viewModel == value)
                 {
@@ -59,7 +59,7 @@ namespace LudumDare50.Client.ViewModels
 
         public override void Dispose()
         {
-            _stringBindings.Clear();
+            _bindings.Clear();
             try
             {
                 _viewModel.PropertyChanged -= ViewModel_PropertyChanged;
@@ -72,26 +72,52 @@ namespace LudumDare50.Client.ViewModels
 
         }
 
-        protected void Bind(Action<string> binding, string propertyName)
+        protected void Bind<PropertyType>(Action<PropertyType> binding, string propertyName)
         {
-            if(!_stringBindings.TryGetValue(propertyName, out var bindings))
+#if UNITY_EDITOR
+            if (!IsPropertyExpectedType<PropertyType>(propertyName))
             {
-                bindings = new List<Action<string>>();
+                Debug.LogError($"Binding to wrong type '{typeof(PropertyType)}' for property {propertyName}");
+                return;
+            }
+#endif
+
+            if (!_bindings.TryGetValue(propertyName, out var bindings))
+            {
+                bindings = new List<Action<object>>();
+                _bindings[propertyName] = bindings;
             }
 
-            bindings.Add(binding);
+            binding.Invoke(GetPropertyValue<PropertyType>(propertyName));
+            bindings.Add((obj) => binding.Invoke((PropertyType)obj));
         }
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            var value = sender.GetType().GetProperty(e.PropertyName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).GetValue(sender);
-            if(value is string stringValue && _stringBindings.TryGetValue(e.PropertyName, out var bindings))
+            var value = GetPropertyValue<object>(e.PropertyName);
+            if(value is string stringValue && _bindings.TryGetValue(e.PropertyName, out var bindings))
             {
                 foreach(var binding in bindings)
                 {
                     binding?.Invoke(stringValue);
                 }
             }
+        }
+
+        private bool IsPropertyExpectedType<PropertyType>(string propertyName)
+        {
+            var property = ViewModel.GetType().GetProperty(propertyName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            if(property == null)
+            {
+                return false;
+            }
+            var propertyType = property.PropertyType;
+            return propertyType == typeof(PropertyType);
+        }
+
+        private PropertyType GetPropertyValue<PropertyType>(string propertyName)
+        {
+            return (PropertyType)ViewModel.GetType().GetProperty(propertyName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).GetValue(ViewModel);
         }
     }
 }

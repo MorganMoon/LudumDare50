@@ -21,6 +21,7 @@ namespace LudumDare50.Client.Installers
             Container.Bind(typeof(ISleepService), typeof(ITickable)).To<SleepService>().AsSingle();
             Container.Bind<IInventory>().To<Inventory>().AsSingle();
             Container.Bind<IGameTime>().To<GameTime>().AsSingle();
+            Container.Bind(typeof(ITaskService), typeof(ITickable)).To<TaskService>().AsSingle();
         }
     }
 }

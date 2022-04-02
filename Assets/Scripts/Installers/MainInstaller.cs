@@ -19,6 +19,7 @@ namespace LudumDare50.Client.Installers
 
             //Game
             Container.Bind(typeof(ISleepService), typeof(ITickable)).To<SleepService>().AsSingle();
+            Container.Bind<IInventory>().To<Inventory>().AsSingle();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Cerberus;
+using LudumDare50.Client.Game;
 using UnityEngine;
 using Zenject;
 
@@ -12,11 +13,13 @@ namespace LudumDare50.Client.States.OfficeState
     public class OfficeState : State, ITickable
     {
         private readonly IStateController<OfficeStateEvent> _officeStateController;
+        private readonly ISleepService _sleepService;
 
         [Inject]
-        public OfficeState(IStateController<OfficeStateEvent> officeStateController)
+        public OfficeState(IStateController<OfficeStateEvent> officeStateController, ISleepService sleepService)
         {
             _officeStateController = officeStateController;
+            _sleepService = sleepService;
         }
 
         public override void OnEnter()
@@ -26,9 +29,17 @@ namespace LudumDare50.Client.States.OfficeState
 
         public void Tick()
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKey(KeyCode.Space))
             {
-                _officeStateController.TriggerEvent(OfficeStateEvent.StartMiniGame);
+                if(_sleepService.TrySleep())
+                {
+                    Debug.Log("Zzzzz");
+                }
+                else
+                {
+                    Debug.Log("nosleep");
+                }
+                //_officeStateController.TriggerEvent(OfficeStateEvent.StartMiniGame);
             }
         }
     }

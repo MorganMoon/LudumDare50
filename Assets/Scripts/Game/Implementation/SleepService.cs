@@ -10,6 +10,7 @@ namespace LudumDare50.Client.Game.Implementation
 
         private float _wakeTimer = 0;
         private bool _isAsleep;
+        private bool _canSleep = true;
         private bool _isRunning = false;
 
         public void Start()
@@ -20,6 +21,7 @@ namespace LudumDare50.Client.Game.Implementation
             }
 
             _isRunning = true;
+            _isAsleep = false;
             Energy = new Energy(100, 100);
         }
 
@@ -47,6 +49,7 @@ namespace LudumDare50.Client.Game.Implementation
                 _wakeTimer = 3;
             }
             _isAsleep = false;
+            _canSleep = false;
         }
 
         public void Tick()
@@ -58,17 +61,22 @@ namespace LudumDare50.Client.Game.Implementation
 
             if(_isAsleep)
             {
-                Energy = new Energy(Energy.Max, Energy.Current + (Time.deltaTime / 2f));
+                Energy = new Energy(Energy.Max, Mathf.Min(Energy.Current + (Time.deltaTime / 2f), Energy.Max));
                 _isAsleep = false;
             }
             else
             {
-                Energy = new Energy(Energy.Max, Energy.Current - Time.deltaTime);
+                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - Time.deltaTime));
 
                 if (_wakeTimer > 0)
                 {
                     _wakeTimer -= Time.deltaTime;
                 }
+            }
+
+            if(!_canSleep)
+            {
+                _canSleep = true;
             }
         }
     }

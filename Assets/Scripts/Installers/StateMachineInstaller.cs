@@ -3,6 +3,7 @@ using Cerberus.Builder;
 using Cerberus.IoC;
 using LudumDare50.Client.States;
 using LudumDare50.Client.States.Credits;
+using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
 using LudumDare50.Client.States.Settings;
 using LudumDare50.Client.States.Startup;
@@ -30,6 +31,7 @@ namespace LudumDare50.Client.Installers
         {
             return new StateMachineBuilder<GameState>(new ZenjectStateMachineContainer(Container))
                 .State<StartupState, StartupStateEvent, StartupStateSubState>(GameState.Startup)
+                    .AddEvent(StartupStateEvent.PlayGame, (stateEvent) => stateEvent.ChangeState(GameState.Gameplay))
                     .State<MainMenuState, MainMenuStateEvent>(StartupStateSubState.MainMenu)
                         .AddEvent(MainMenuStateEvent.Settings, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.SettingsMenu))
                         .AddEvent(MainMenuStateEvent.Credits, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.CreditsMenu))
@@ -40,6 +42,8 @@ namespace LudumDare50.Client.Installers
                     .State<CreditsState, CreditsStateEvent>(StartupStateSubState.CreditsMenu)
                         .AddEvent(CreditsStateEvent.GoBack, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.MainMenu))
                     .End()
+                .End()
+                .State<GameplayState, GameplayStateEvent>(GameState.Gameplay)
                 .End()
                 .Build();
         }

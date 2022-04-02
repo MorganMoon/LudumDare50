@@ -1,6 +1,7 @@
 using Cerberus;
 using LudumDare50.Client.States.MainMenu;
 using LudumDare50.Client.States.Startup;
+using UnityEngine;
 using Zenject;
 
 namespace LudumDare50.Client.ViewModels.MainMenu
@@ -46,6 +47,11 @@ namespace LudumDare50.Client.ViewModels.MainMenu
         public void OnCreditsButtonPressed()
         {
             _mainMenuStateController.TriggerEvent(MainMenuStateEvent.Credits);
+        }
+
+        public void OnQuitButtonPressed()
+        {
+            Application.Quit();
         }
     }
 }

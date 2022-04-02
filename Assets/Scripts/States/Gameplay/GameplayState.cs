@@ -1,18 +1,20 @@
 ﻿using Cerberus;
 using LudumDare50.Client.Infrastructure;
+using Zenject;
 
-namespace LudumDare50.Client.States.Credits
+namespace LudumDare50.Client.States.Gameplay
 {
-    public enum CreditsStateEvent
+    public enum GameplayStateEvent
     {
-        GoBack
+
     }
 
-    public class CreditsState : State
+    public class GameplayState : State
     {
         private readonly IScreenService _screenService;
 
-        public CreditsState(IScreenService screenService)
+        [Inject]
+        public GameplayState(IScreenService screenService)
         {
             _screenService = screenService;
         }

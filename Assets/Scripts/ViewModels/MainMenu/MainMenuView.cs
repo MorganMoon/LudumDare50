@@ -27,5 +27,10 @@ namespace LudumDare50.Client.ViewModels.MainMenu
         {
             ViewModel.OnCreditsButtonPressed();
         }
+
+        public void OnQuitButtonPressed()
+        {
+            ViewModel.OnQuitButtonPressed();
+        }
     }
 }

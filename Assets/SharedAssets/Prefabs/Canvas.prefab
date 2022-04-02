@@ -115,3 +115,4 @@ MonoBehaviour:
   _viewPrefabs:
   - {fileID: 7791659298981156712, guid: b6429960e5b8aa54b92ad54795b2560b, type: 3}
   - {fileID: 3115047187731287823, guid: 2a7800f5b264eb94891ae2d410de2540, type: 3}
+  - {fileID: 3682504856272222832, guid: 0f1ef24aa6c0f634088fc565069992ce, type: 3}

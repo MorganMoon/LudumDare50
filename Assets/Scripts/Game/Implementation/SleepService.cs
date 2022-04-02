@@ -55,6 +55,7 @@ namespace LudumDare50.Client.Game.Implementation
             if(_isAsleep)
             {
                 Energy = new Energy(Energy.Max, Energy.Current + (Time.deltaTime / 2f));
+                _isAsleep = false;
             }
             else
             {

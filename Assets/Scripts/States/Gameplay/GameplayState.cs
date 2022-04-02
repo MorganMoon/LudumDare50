@@ -1,6 +1,8 @@
 ﻿using Cerberus;
+using LudumDare50.Client.Data;
 using LudumDare50.Client.Game;
 using LudumDare50.Client.Infrastructure;
+using LudumDare50.Client.ViewModels.Energy;
 using Zenject;
 
 namespace LudumDare50.Client.States.Gameplay
@@ -16,7 +18,7 @@ namespace LudumDare50.Client.States.Gameplay
         MiniGame
     }
 
-    public class GameplayState : State
+    public class GameplayState : State, ITickable
     {
         private readonly IScreenService _screenService;
         private readonly ISleepService _sleepService;
@@ -30,13 +32,21 @@ namespace LudumDare50.Client.States.Gameplay
 
         public override void OnEnter()
         {
-            _screenService.ClearScreen();
             _sleepService.Start();
+            _screenService.SetActiveScreen<EnergyViewModel, Energy>(_sleepService.Energy);
         }
 
         public override void OnExit()
         {
             _sleepService.Stop();
+        }
+
+        public void Tick()
+        {
+            if(_screenService.TryGetViewModel<EnergyViewModel>(out var energyViewModel))
+            {
+                energyViewModel.CurrentEnergy = _sleepService.Energy.Current;
+            }
         }
     }
 }

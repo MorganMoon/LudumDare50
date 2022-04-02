@@ -18,7 +18,7 @@ namespace LudumDare50.Client.Installers
             Container.Bind<IScreenService>().To<ScreenService>().AsSingle().WithArguments(_viewManager);
 
             //Game
-            Container.Bind<ISleepService>().To<SleepService>().AsSingle();
+            Container.Bind(typeof(ISleepService), typeof(ITickable)).To<SleepService>().AsSingle();
         }
     }
 }

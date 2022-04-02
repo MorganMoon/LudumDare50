@@ -4,6 +4,7 @@ using Cerberus.IoC;
 using LudumDare50.Client.StateHandler;
 using LudumDare50.Client.States;
 using LudumDare50.Client.States.Credits;
+using LudumDare50.Client.States.GameOver;
 using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
 using LudumDare50.Client.States.MiniGame;
@@ -50,6 +51,7 @@ namespace LudumDare50.Client.Installers
                     .End()
                 .End()
                 .State<GameplayState, GameplayStateEvent, GameplayStateSubState>(GameState.Gameplay)
+                    .AddEvent(GameplayStateEvent.GameOver, (stateEvent) => stateEvent.ChangeState(GameState.GameOver))
                     .State<OfficeState, OfficeStateEvent>(GameplayStateSubState.Office)
                         .AddEvent(OfficeStateEvent.StartMiniGame, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.MiniGame))
                     .End()
@@ -61,6 +63,9 @@ namespace LudumDare50.Client.Installers
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
                         .End()
                     .End()
+                .End()
+                .State<GameOverState, GameOverStateEvent>(GameState.GameOver)
+                    .AddEvent(GameOverStateEvent.Continue, (stateEvent) => stateEvent.ChangeState(GameState.Startup))
                 .End()
                 .Build();
         }

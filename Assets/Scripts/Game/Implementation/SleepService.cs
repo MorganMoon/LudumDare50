@@ -66,7 +66,7 @@ namespace LudumDare50.Client.Game.Implementation
             }
             else
             {
-                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - Time.deltaTime));
+                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - Time.deltaTime, 0));
 
                 if (_wakeTimer > 0)
                 {

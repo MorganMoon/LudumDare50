@@ -12,6 +12,8 @@ namespace LudumDare50.Client.ViewModels.Settings
         private TMP_Dropdown _resolutionDropdown;
         [SerializeField]
         private Button _applyButton;
+        [SerializeField]
+        private Toggle _fullScreenToggle;
 
         protected override void SetBindings()
         {
@@ -36,6 +38,8 @@ namespace LudumDare50.Client.ViewModels.Settings
 
             }, nameof(ViewModel.SelectedResolution));
             Bind<bool>((changesMade) => _applyButton.interactable = changesMade, nameof(ViewModel.ChangesMade));
+            Bind<bool>((fullScreen) => _fullScreenToggle.isOn = fullScreen, nameof(ViewModel.IsFullScreen));
+            _fullScreenToggle.onValueChanged.AddListener((fullScreen) => ViewModel.IsFullScreen = fullScreen);
         }
 
         public void OnApplyButtonPressed()

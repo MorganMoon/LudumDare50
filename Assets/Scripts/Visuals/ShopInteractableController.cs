@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using LudumDare50.Client.Data;
+using LudumDare50.Client.Game;
+using Zenject;
+
+namespace LudumDare50.Client.Visuals
+{
+    public class ShopInteractableController : MonoBehaviour
+    {
+        [SerializeField]
+        private int _costItemCount;
+
+        [SerializeField]
+        private InventoryItemType _purchaseableItemType;
+
+        [Inject]
+        private IInventory _inventory;
+
+        public void TryPurchaseItem()
+        {
+            if (_inventory.CanAfford(new InventoryItem(InventoryItemType.Money, _costItemCount)))
+            {
+                var curMoney = _inventory.GetItem(InventoryItemType.Money);
+                var updatedMoney = curMoney.Count - _costItemCount;
+                _inventory.SetItem(new InventoryItem(InventoryItemType.Money, updatedMoney));
+            }
+            else
+            {
+                //TODO: Display dialog bubble
+            }
+        }
+    }
+}

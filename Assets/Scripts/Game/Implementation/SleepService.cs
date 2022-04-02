@@ -41,8 +41,12 @@ namespace LudumDare50.Client.Game.Implementation
 
         public void WakeUp()
         {
+            //If were caught asleep, we want to stop the player from trying to sleep again for some time
+            if (_isAsleep)
+            {
+                _wakeTimer = 3;
+            }
             _isAsleep = false;
-            _wakeTimer = 3;
         }
 
         public void Tick()

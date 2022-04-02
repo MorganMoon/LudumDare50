@@ -20,6 +20,16 @@ namespace LudumDare50.Client.States.MiniGame.ClickABunch
             _miniGameStateController = miniGameStateController;
         }
 
+        public override void OnEnter()
+        {
+            Debug.Log("ClickABunch game started!");
+        }
+
+        public override void OnExit()
+        {
+            Debug.Log("ClickABunch game finished!");
+        }
+
         public void Tick()
         {
             if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -27,7 +37,7 @@ namespace LudumDare50.Client.States.MiniGame.ClickABunch
                 _clickCount++;
             }
 
-            if(_clickCount > 10)
+            if(_clickCount >= 10)
             {
                 _miniGameStateController.TriggerEvent(MiniGameStateEvent.Success);
             }

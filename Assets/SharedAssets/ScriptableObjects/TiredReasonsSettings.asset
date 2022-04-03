@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7ee7aadc18a48249e745d1fabf2a31, type: 3}
   m_Name: TiredReasonsSettings
   m_EditorClassIdentifier: 
-  TiredReasons: []
+  TiredReasons:
+  - You partied too much last night
+  - Your last bathroom trip really took it out of you
+  - What else should be expected of an epic gamer discord moderator?

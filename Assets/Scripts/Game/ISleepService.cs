@@ -4,7 +4,7 @@ namespace LudumDare50.Client.Game
 {
     public interface ISleepService
     {
-        Energy Energy { get; }
+        Energy Energy { get; set; }
 
         void Start();
         void Stop();

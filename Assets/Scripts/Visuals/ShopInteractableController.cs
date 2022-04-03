@@ -18,6 +18,9 @@ namespace LudumDare50.Client.Visuals
         [Inject]
         private IInventory _inventory;
 
+        [Inject]
+        private IStatusEffectService _statusEffectService;
+
         public void TryPurchaseItem()
         {
             if (_inventory.CanAfford(new InventoryItem(InventoryItemType.Money, _costItemCount)))
@@ -25,6 +28,7 @@ namespace LudumDare50.Client.Visuals
                 var curMoney = _inventory.GetItem(InventoryItemType.Money);
                 var updatedMoney = curMoney.Count - _costItemCount;
                 _inventory.SetItem(new InventoryItem(InventoryItemType.Money, updatedMoney));
+                _statusEffectService.TryApplyEffect(_purchaseableItemType);
             }
             else
             {

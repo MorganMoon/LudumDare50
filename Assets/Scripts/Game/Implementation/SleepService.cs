@@ -7,7 +7,7 @@ namespace LudumDare50.Client.Game.Implementation
 {
     public class SleepService : ISleepService, ITickable
     {
-        public Energy Energy { get; private set; }
+        public Energy Energy { get; set; }
 
         private readonly SleepSettings _sleepSettings;
 

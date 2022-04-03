@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LudumDare50.Client.Data;
 
 namespace LudumDare50.Client.Game.Implementation
 {
     public class Inventory : IInventory
     {
+        public event Action OnInventoryUpdated;
+
         private readonly Dictionary<InventoryItemType, int> _inventoryCounts = new Dictionary<InventoryItemType, int>();
 
         public InventoryItem GetItem(InventoryItemType inventoryItemType)
@@ -16,6 +19,8 @@ namespace LudumDare50.Client.Game.Implementation
         public void SetItem(InventoryItem inventoryItem)
         {
             _inventoryCounts[inventoryItem.Type] = inventoryItem.Count;
+
+            OnInventoryUpdated?.Invoke();
         }
 
         public bool CanAfford(InventoryItem inventoryItem)

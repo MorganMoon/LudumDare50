@@ -15,6 +15,9 @@ namespace LudumDare50.Client.Visuals
         [SerializeField]
         private InventoryItemType _purchaseableItemType;
 
+        [SerializeField]
+        private Animator _dialogBubbleAnimator;
+
         [Inject]
         private IInventory _inventory;
 
@@ -32,7 +35,7 @@ namespace LudumDare50.Client.Visuals
             }
             else
             {
-                //TODO: Display dialog bubble
+                _dialogBubbleAnimator.SetTrigger("StartBubble");
             }
         }
     }

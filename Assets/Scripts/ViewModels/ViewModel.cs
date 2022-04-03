@@ -13,7 +13,7 @@ namespace LudumDare50.Client.ViewModels
 
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             PropertyChanged = null;
         }

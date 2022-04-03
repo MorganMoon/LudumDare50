@@ -31,11 +31,18 @@ public class MoneyViewModel : ViewModel
     {
         _inventory = inventory;
 
-        _inventory.OnInventoryUpdated += InInventoryUpdated;
+        _inventory.OnInventoryUpdated += OnInventoryUpdated;
     }
 
-    private void InInventoryUpdated()
+    private void OnInventoryUpdated()
     {
         MoneyCount = _inventory.GetItem(InventoryItemType.Money).Count;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        _inventory.OnInventoryUpdated -= OnInventoryUpdated;
     }
 }

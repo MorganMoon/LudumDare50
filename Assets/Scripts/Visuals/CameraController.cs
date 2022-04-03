@@ -13,7 +13,7 @@ namespace LudumDare50.Client.Visuals
         private Camera _mainCamera;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             _mainCamera = GetComponent<Camera>();
             CalculateCamSize();

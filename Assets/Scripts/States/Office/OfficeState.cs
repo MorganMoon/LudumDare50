@@ -22,24 +22,18 @@ namespace LudumDare50.Client.States.OfficeState
             _sleepService = sleepService;
         }
 
-        public override void OnEnter()
-        {
-            Debug.Log("Welcome to the office! Press 'Spacebar' to start a minigame!");
-        }
-
         public void Tick()
         {
             if(Input.GetKey(KeyCode.Space))
             {
                 if(_sleepService.TrySleep())
                 {
-                    Debug.Log("Zzzzz");
+                    //Play sleeping animation
                 }
                 else
                 {
-                    Debug.Log("nosleep");
+                    //Do something else, we're caught!
                 }
-                //_officeStateController.TriggerEvent(OfficeStateEvent.StartMiniGame);
             }
         }
     }

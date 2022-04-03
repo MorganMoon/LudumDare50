@@ -16,6 +16,8 @@ namespace LudumDare50.Client.Installers
         [Header("Settings")]
         [SerializeField]
         private TiredReasonSettings _tiredReasonSettings;
+        [SerializeField]
+        private SleepSettings _sleepSettings;
 
         public override void InstallBindings()
         {
@@ -30,6 +32,7 @@ namespace LudumDare50.Client.Installers
 
             //Settings
             Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
+            Container.Bind<SleepSettings>().FromInstance(_sleepSettings);
         }
     }
 }

@@ -2,7 +2,8 @@
 {
     public enum InventoryItemType
     {
-        Money
+        Money,
+        Coffee
     }
 
     public struct InventoryItem

@@ -44,7 +44,10 @@ namespace LudumDare50.Client.States.Gameplay
             _zenjectSceneLoader.LoadScene("GameplayScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
             _sleepService.Start();
             _gameTime.Start();
-            _screenService.SetActiveScreen<EnergyViewModel, Energy>(_sleepService.Energy);
+            _screenService.SetActiveScreen()
+                .With<EnergyViewModel, Energy>(_sleepService.Energy)
+                .With<MoneyViewModel>()
+                .Build();
         }
 
         public override void OnExit()

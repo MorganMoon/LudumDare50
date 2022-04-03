@@ -18,6 +18,8 @@ namespace LudumDare50.Client.Installers
         private TiredReasonSettings _tiredReasonSettings;
         [SerializeField]
         private SleepSettings _sleepSettings;
+        [SerializeField]
+        private StatusEffectSettings _statusEffectSettings;
 
         public override void InstallBindings()
         {
@@ -28,11 +30,13 @@ namespace LudumDare50.Client.Installers
             Container.Bind(typeof(ISleepService), typeof(ITickable)).To<SleepService>().AsSingle();
             Container.Bind<IInventory>().To<Inventory>().AsSingle();
             Container.Bind<IGameTime>().To<GameTime>().AsSingle();
+            Container.Bind<IStatusEffectService>().To<StatusEffectService>().AsSingle();
             Container.Bind(typeof(ITaskService), typeof(ITickable)).To<TaskService>().AsSingle();
 
             //Settings
             Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
             Container.Bind<SleepSettings>().FromInstance(_sleepSettings);
+            Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
         }
     }
 }

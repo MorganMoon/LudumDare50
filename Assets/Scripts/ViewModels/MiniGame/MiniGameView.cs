@@ -1,4 +1,4 @@
-namespace LudumDare50.Client.ViewModels
+namespace LudumDare50.Client.ViewModels.MiniGame
 {
     public class MiniGameView : View<MiniGameViewModel>
     {

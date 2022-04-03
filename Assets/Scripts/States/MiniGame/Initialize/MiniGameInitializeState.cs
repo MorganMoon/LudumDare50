@@ -10,6 +10,7 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
         Exit,
         PlayClickABunch,
         PlaySpamPopups,
+        PlayEnterPassword,
         PlayCollectApples
     }
 

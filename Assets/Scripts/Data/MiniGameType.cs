@@ -4,6 +4,7 @@ namespace LudumDare50.Client.Data
     {
         ClickABunch,
         SpamPopups,
-        CollectApples
+        EnterPassword,
+        CollectApples,
     }
 }

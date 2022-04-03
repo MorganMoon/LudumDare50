@@ -25,23 +25,23 @@ namespace LudumDare50.Client.States.Gameplay
         private readonly ISleepService _sleepService;
         private readonly IStateController<GameplayStateEvent> _gameplayStateController;
         private readonly IGameTime _gameTime;
-        private readonly Transform _gameplayArea;
+        private readonly ZenjectSceneLoader _zenjectSceneLoader;
 
         [Inject]
         public GameplayState(IScreenService screenService, ISleepService sleepService,
             IStateController<GameplayStateEvent> gameplayStateController, IGameTime gameTime,
-            [Inject(Id = "GameplayArea")]Transform gameplayArea)
+            ZenjectSceneLoader zenjectSceneLoader)
         {
             _screenService = screenService;
             _sleepService = sleepService;
             _gameplayStateController = gameplayStateController;
             _gameTime = gameTime;
-            _gameplayArea = gameplayArea;
+            _zenjectSceneLoader = zenjectSceneLoader;
         }
 
         public override void OnEnter()
         {
-            _gameplayArea.gameObject.SetActive(true);
+            _zenjectSceneLoader.LoadScene("GameplayScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
             _sleepService.Start();
             _gameTime.Start();
             _screenService.SetActiveScreen<EnergyViewModel, Energy>(_sleepService.Energy);
@@ -51,7 +51,7 @@ namespace LudumDare50.Client.States.Gameplay
         {
             _sleepService.Stop();
             _gameTime.Stop();
-            _gameplayArea.gameObject.SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("GameplayScene");
         }
 
         public void Tick()

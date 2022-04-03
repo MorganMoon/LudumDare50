@@ -9,6 +9,7 @@ using LudumDare50.Client.States.GameOver;
 using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
 using LudumDare50.Client.States.MiniGame;
+using LudumDare50.Client.States.MiniGame.Captcha;
 using LudumDare50.Client.States.MiniGame.ClickABunch;
 using LudumDare50.Client.States.MiniGame.Initialize;
 using LudumDare50.Client.States.OfficeState;
@@ -70,6 +71,8 @@ namespace LudumDare50.Client.Installers
                             .AddEvent(MiniGameInitializeStateEvent.PlayClickABunch, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.ClickABunchMiniGame))
                         .End()
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
+                        .End()
+                        .State<MiniGameCaptchaState, MiniGameCaptchaStateEvent>(MiniGameStateSubState.CaptchaMiniGame)
                         .End()
                     .End()
                 .End()

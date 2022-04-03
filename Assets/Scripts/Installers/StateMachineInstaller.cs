@@ -12,6 +12,7 @@ using LudumDare50.Client.States.MiniGame;
 using LudumDare50.Client.States.MiniGame.ClickABunch;
 using LudumDare50.Client.States.MiniGame.Initialize;
 using LudumDare50.Client.States.MiniGame.SpamPopups;
+using LudumDare50.Client.States.MiniGame.EnterPassword;
 using LudumDare50.Client.States.OfficeState;
 using LudumDare50.Client.States.Settings;
 using LudumDare50.Client.States.Startup;
@@ -69,11 +70,14 @@ namespace LudumDare50.Client.Installers
                         .AddEvent(MiniGameStateEvent.Failure, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.Office))
                         .State<MiniGameInitializeState, MiniGameInitializeStateEvent>(MiniGameStateSubState.Initialize)
                             .AddEvent(MiniGameInitializeStateEvent.PlayClickABunch, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.ClickABunchMiniGame))
+                            .AddEvent(MiniGameInitializeStateEvent.PlayEnterPassword, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.EnterPasswordMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlaySpamPopups, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SpamPopupsMiniGame))
                         .End()
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
                         .End()
                         .State<MiniGameSpamPopupsState, MiniGameSpamPopupsStateEvent>(MiniGameStateSubState.SpamPopupsMiniGame)
+                        .End()
+                        .State<MiniGameEnterPasswordState, MiniGameEnterPasswordStateEvent>(MiniGameStateSubState.EnterPasswordMiniGame)
                         .End()
                     .End()
                 .End()

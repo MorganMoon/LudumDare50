@@ -2,7 +2,7 @@ using Cerberus;
 using LudumDare50.Client.States.MiniGame;
 using Zenject;
 
-namespace LudumDare50.Client.ViewModels
+namespace LudumDare50.Client.ViewModels.MiniGame
 {
     public class MiniGameViewModel : ViewModel
     {

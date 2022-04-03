@@ -21,6 +21,8 @@ namespace LudumDare50.Client.Installers
         private SleepSettings _sleepSettings;
         [SerializeField]
         private StatusEffectSettings _statusEffectSettings;
+        [SerializeField]
+        private MiniGameSpamPopupsSettings _miniGameSpamPopupsSettings;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -42,6 +44,7 @@ namespace LudumDare50.Client.Installers
             Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
             Container.Bind<SleepSettings>().FromInstance(_sleepSettings);
             Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
+            Container.Bind<MiniGameSpamPopupsSettings>().FromInstance(_miniGameSpamPopupsSettings);
 
             //Factoires
             Container.BindFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry, MiniGameSpamPopupsViewPopupEntry.Factory>().FromComponentInNewPrefab(_miniGameSpamPopupsViewPopupEntry);

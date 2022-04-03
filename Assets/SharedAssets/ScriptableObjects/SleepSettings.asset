@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5758319af84fb44f5b8c59ca62897c43, type: 3}
   m_Name: SleepSettings
   m_EditorClassIdentifier: 
-  StartingEnergy: 20
+  StartingEnergy: 1000
   EnergySleepAdditionMultiplier: 0.5
   EnergyAwakeSubtractionMultiplier: 1
   CaughtAsleepForceAwakeTimeAmount: 3

@@ -8,7 +8,8 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
     public enum MiniGameInitializeStateEvent
     {
         Exit,
-        PlayClickABunch
+        PlayClickABunch,
+        PlaySpamPopups
     }
 
     public class MiniGameInitializeState : State

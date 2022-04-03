@@ -94,3 +94,5 @@ MonoBehaviour:
   _viewManager: {fileID: 0}
   _tiredReasonSettings: {fileID: 11400000, guid: 8fe631631ab0449fcb8dbbe9be90721d, type: 2}
   _sleepSettings: {fileID: 11400000, guid: 1f06c731ba71d426ca6f7ac48750c54e, type: 2}
+  _statusEffectSettings: {fileID: 0}
+  _miniGameSpamPopupsViewPopupEntry: {fileID: 4505178976089757094, guid: 90269ef681661384ea4a747d64327a61, type: 3}

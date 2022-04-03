@@ -16,7 +16,8 @@ namespace LudumDare50.Client.States.MiniGame
     public enum MiniGameStateSubState
     {
         Initialize,
-        ClickABunchMiniGame
+        ClickABunchMiniGame,
+        SpamPopupsMiniGame,
     }
 
     public class MiniGameState : State

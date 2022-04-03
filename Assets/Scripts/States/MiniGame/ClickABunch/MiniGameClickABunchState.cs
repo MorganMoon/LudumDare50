@@ -1,6 +1,6 @@
 ﻿using Cerberus;
-using UnityEngine;
-using Zenject;
+using LudumDare50.Client.Infrastructure;
+using LudumDare50.Client.ViewModels.ClickABunch;
 
 namespace LudumDare50.Client.States.MiniGame.ClickABunch
 {
@@ -9,38 +9,23 @@ namespace LudumDare50.Client.States.MiniGame.ClickABunch
 
     }
 
-    public class MiniGameClickABunchState : State, ITickable
+    public class MiniGameClickABunchState : State
     {
-        private readonly IStateController<MiniGameStateEvent> _miniGameStateController;
+        private readonly IScreenService _screenService;
 
-        private int _clickCount = 0;
-
-        public MiniGameClickABunchState(IStateController<MiniGameStateEvent> miniGameStateController)
+        public MiniGameClickABunchState(IScreenService screenService)
         {
-            _miniGameStateController = miniGameStateController;
+            _screenService = screenService;
         }
 
         public override void OnEnter()
         {
-            Debug.Log("ClickABunch game started!");
+            _screenService.AddToScreen<MiniGameClickABunchViewModel>();
         }
 
         public override void OnExit()
         {
-            Debug.Log("ClickABunch game finished!");
-        }
-
-        public void Tick()
-        {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                _clickCount++;
-            }
-
-            if(_clickCount >= 10)
-            {
-                _miniGameStateController.TriggerEvent(MiniGameStateEvent.Success);
-            }
+            _screenService.RemoveFromScreen<MiniGameClickABunchViewModel>();
         }
     }
 }

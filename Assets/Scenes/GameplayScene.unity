@@ -204,7 +204,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -366,6 +366,112 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1514065227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1853366598}
+    m_Modifications:
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.583
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993196406716224414, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_Name
+      value: DialogBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993196406716224414, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[0]
+      value: Did you see my email from yesterday?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[1]
+      value: Working hard? Or hardly working?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[2]
+      value: So, did you see the game last night?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[3]
+      value: Could you go ahead and do that task I assigned you? That would be greaaat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[4]
+      value: Apologies for my delayed response, but I am going to have to say no...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[5]
+      value: You making it to the company softball game?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[6]
+      value: Let's circle back and take this offline after lunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[7]
+      value: It is what it is
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[8]
+      value: What do you think of this crazy weather were having?
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+--- !u!4 &1514065228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1997321703866045158, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+  m_PrefabInstance: {fileID: 1514065227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712991936
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +671,7 @@ Transform:
   m_LocalScale: {x: 0.13116391, y: 0.13116391, z: 0.1311639}
   m_Children: []
   m_Father: {fileID: 1853366598}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1744936296
 SpriteRenderer:
@@ -647,6 +753,7 @@ Transform:
   m_LocalPosition: {x: -3.44, y: 1.92, z: 0.8931979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1514065228}
   - {fileID: 1878757798}
   - {fileID: 1744936295}
   m_Father: {fileID: 2038938393}
@@ -781,7 +888,7 @@ Transform:
   m_LocalScale: {x: 0.190967, y: 0.190967, z: 0.19096695}
   m_Children: []
   m_Father: {fileID: 1853366598}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.929}
 --- !u!212 &1878757799
 SpriteRenderer:

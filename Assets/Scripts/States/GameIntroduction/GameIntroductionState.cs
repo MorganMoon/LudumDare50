@@ -16,18 +16,26 @@ namespace LudumDare50.Client.States.GameIntroduction
     {
         private readonly IScreenService _screenService;
         private readonly TiredReasonSettings _tiredReasonSettings;
+        private readonly Transform _startupArea;
 
         [Inject]
-        public GameIntroductionState(IScreenService screenService, TiredReasonSettings tiredReasonSettings)
+        public GameIntroductionState(IScreenService screenService, TiredReasonSettings tiredReasonSettings, [Inject(Id = "StartupArea")] Transform startupArea)
         {
             _screenService = screenService;
             _tiredReasonSettings = tiredReasonSettings;
+            _startupArea = startupArea;
         }
 
         public override void OnEnter()
         {
+            _startupArea.gameObject.SetActive(true);
             var randomReason = _tiredReasonSettings.TiredReasons[Random.Range(0, _tiredReasonSettings.TiredReasons.Length)];
             _screenService.SetActiveScreen<GameIntroductionViewModel, string>(randomReason);
+        }
+
+        public override void OnExit()
+        {
+            _startupArea.gameObject.SetActive(false);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LudumDare50.Client.Data;
+using LudumDare50.Client.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -8,10 +9,18 @@ namespace LudumDare50.Client.Game.Implementation
     {
         public Energy Energy { get; private set; }
 
+        private readonly SleepSettings _sleepSettings;
+
         private float _wakeTimer = 0;
         private bool _isAsleep;
         private bool _canSleep = true;
         private bool _isRunning = false;
+
+        [Inject]
+        public SleepService(SleepSettings sleepSettings)
+        {
+            _sleepSettings = sleepSettings;
+        }
 
         public void Start()
         {
@@ -22,7 +31,7 @@ namespace LudumDare50.Client.Game.Implementation
 
             _isRunning = true;
             _isAsleep = false;
-            Energy = new Energy(100, 100);
+            Energy = new Energy(_sleepSettings.StartingEnergy, _sleepSettings.StartingEnergy);
         }
 
         public void Stop()
@@ -32,7 +41,7 @@ namespace LudumDare50.Client.Game.Implementation
 
         public bool TrySleep()
         {
-            if(_wakeTimer > 0)
+            if(!_canSleep || _wakeTimer > 0)
             {
                 return false;
             }
@@ -46,7 +55,8 @@ namespace LudumDare50.Client.Game.Implementation
             //If were caught asleep, we want to stop the player from trying to sleep again for some time
             if (_isAsleep)
             {
-                _wakeTimer = 3;
+                _wakeTimer = _sleepSettings.CaughtAsleepForceAwakeTimeAmount;
+                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - _sleepSettings.CaughtAsleepEnergyPenalty, 0));
             }
             _isAsleep = false;
             _canSleep = false;
@@ -61,12 +71,12 @@ namespace LudumDare50.Client.Game.Implementation
 
             if(_isAsleep)
             {
-                Energy = new Energy(Energy.Max, Mathf.Min(Energy.Current + (Time.deltaTime / 2f), Energy.Max));
+                Energy = new Energy(Energy.Max, Mathf.Min(Energy.Current + (Time.deltaTime * _sleepSettings.EnergySleepAdditionMultiplier), Energy.Max));
                 _isAsleep = false;
             }
             else
             {
-                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - Time.deltaTime, 0));
+                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - (Time.deltaTime * _sleepSettings.EnergyAwakeSubtractionMultiplier), 0));
 
                 if (_wakeTimer > 0)
                 {

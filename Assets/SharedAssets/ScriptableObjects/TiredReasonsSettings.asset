@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7ee7aadc18a48249e745d1fabf2a31, type: 3}
+  m_Name: TiredReasonsSettings
+  m_EditorClassIdentifier: 
+  TiredReasons:
+  - You partied too much last night
+  - Your last bathroom trip really took it out of you
+  - What else should be expected of an epic gamer discord moderator?

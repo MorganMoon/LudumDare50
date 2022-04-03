@@ -4,6 +4,7 @@ using Cerberus.IoC;
 using LudumDare50.Client.StateHandler;
 using LudumDare50.Client.States;
 using LudumDare50.Client.States.Credits;
+using LudumDare50.Client.States.GameIntroduction;
 using LudumDare50.Client.States.GameOver;
 using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
@@ -38,7 +39,7 @@ namespace LudumDare50.Client.Installers
             return new StateMachineBuilder<GameState>(new ZenjectStateMachineContainer(Container))
                 .AddStateHandler<ITickable, TickableStateHandler>()
                 .State<StartupState, StartupStateEvent, StartupStateSubState>(GameState.Startup)
-                    .AddEvent(StartupStateEvent.PlayGame, (stateEvent) => stateEvent.ChangeState(GameState.Gameplay))
+                    .AddEvent(StartupStateEvent.PlayGame, (stateEvent) => stateEvent.ChangeState(GameState.GameIntroduction))
                     .State<MainMenuState, MainMenuStateEvent>(StartupStateSubState.MainMenu)
                         .AddEvent(MainMenuStateEvent.Settings, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.SettingsMenu))
                         .AddEvent(MainMenuStateEvent.Credits, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.CreditsMenu))
@@ -50,13 +51,21 @@ namespace LudumDare50.Client.Installers
                         .AddEvent(CreditsStateEvent.GoBack, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.MainMenu))
                     .End()
                 .End()
+                .State<GameIntroductionState, GameIntroductionStateEvent>(GameState.GameIntroduction)
+                    .AddEvent(GameIntroductionStateEvent.Continue, (stateEvent) => stateEvent.ChangeState(GameState.Gameplay))
+                .End()
                 .State<GameplayState, GameplayStateEvent, GameplayStateSubState>(GameState.Gameplay)
                     .AddEvent(GameplayStateEvent.GameOver, (stateEvent) => stateEvent.ChangeState(GameState.GameOver))
                     .State<OfficeState, OfficeStateEvent>(GameplayStateSubState.Office)
                         .AddEvent(OfficeStateEvent.StartMiniGame, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.MiniGame))
                     .End()
                     .State<MiniGameState, MiniGameStateEvent, MiniGameStateSubState>(GameplayStateSubState.MiniGame)
-                        .AddEvent(MiniGameStateEvent.Success, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.Office))
+                        .AddEvent(MiniGameStateEvent.Success, (stateEvent) =>
+                        {
+                            stateEvent.StateInstance.OnSuccess();
+                            stateEvent.ChangeState(GameplayStateSubState.Office);
+                        })
+                        .AddEvent(MiniGameStateEvent.Failure, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.Office))
                         .State<MiniGameInitializeState, MiniGameInitializeStateEvent>(MiniGameStateSubState.Initialize)
                             .AddEvent(MiniGameInitializeStateEvent.PlayClickABunch, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.ClickABunchMiniGame))
                         .End()

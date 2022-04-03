@@ -9,10 +9,11 @@ namespace LudumDare50.Client.Game.Implementation
     {
         public Energy Energy { get; set; }
 
+        public bool IsAsleep { get; private set; }
+
         private readonly SleepSettings _sleepSettings;
 
         private float _wakeTimer = 0;
-        private bool _isAsleep;
         private bool _canSleep = true;
         private bool _isRunning = false;
 
@@ -30,7 +31,7 @@ namespace LudumDare50.Client.Game.Implementation
             }
 
             _isRunning = true;
-            _isAsleep = false;
+            IsAsleep = false;
             Energy = new Energy(_sleepSettings.StartingEnergy, _sleepSettings.StartingEnergy);
         }
 
@@ -46,19 +47,19 @@ namespace LudumDare50.Client.Game.Implementation
                 return false;
             }
 
-            _isAsleep = true;
+            IsAsleep = true;
             return true;
         }
 
         public void WakeUp()
         {
             //If were caught asleep, we want to stop the player from trying to sleep again for some time
-            if (_isAsleep)
+            if (IsAsleep)
             {
                 _wakeTimer = _sleepSettings.CaughtAsleepForceAwakeTimeAmount;
                 Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - _sleepSettings.CaughtAsleepEnergyPenalty, 0));
             }
-            _isAsleep = false;
+            IsAsleep = false;
             _canSleep = false;
         }
 
@@ -69,10 +70,10 @@ namespace LudumDare50.Client.Game.Implementation
                 return;
             }
 
-            if(_isAsleep)
+            if(IsAsleep)
             {
                 Energy = new Energy(Energy.Max, Mathf.Min(Energy.Current + (Time.deltaTime * _sleepSettings.EnergySleepAdditionMultiplier), Energy.Max));
-                _isAsleep = false;
+                IsAsleep = false;
             }
             else
             {

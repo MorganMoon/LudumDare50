@@ -3,6 +3,7 @@ using LudumDare50.Client.Game.Implementation;
 using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.Infrastructure.Implementation;
 using LudumDare50.Client.Settings;
+using LudumDare50.Client.ViewModels.ClickABunch;
 using UnityEngine;
 using Zenject;
 
@@ -21,6 +22,10 @@ namespace LudumDare50.Client.Installers
         [SerializeField]
         private StatusEffectSettings _statusEffectSettings;
 
+        [Header("Prefabs")]
+        [SerializeField]
+        private MiniGameSpamPopupsViewPopupEntry _miniGameSpamPopupsViewPopupEntry;
+
         public override void InstallBindings()
         {
             //Infrastructure
@@ -37,6 +42,9 @@ namespace LudumDare50.Client.Installers
             Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
             Container.Bind<SleepSettings>().FromInstance(_sleepSettings);
             Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
+
+            //Factoires
+            Container.BindFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry, MiniGameSpamPopupsViewPopupEntry.Factory>().FromComponentInNewPrefab(_miniGameSpamPopupsViewPopupEntry);
         }
     }
 }

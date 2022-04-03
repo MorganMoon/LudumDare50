@@ -52,6 +52,7 @@ namespace LudumDare50.Client.Infrastructure.Implementation
             var newInstance = Resolve<T>();
             newInstance.Prepare();
             _activeViewModels.Add(viewModelType, newInstance);
+            UpdateViewManager();
             return newInstance;
         }
 
@@ -68,6 +69,7 @@ namespace LudumDare50.Client.Infrastructure.Implementation
             newInstance.Prepare();
             newInstance.Prepare(parameter);
             _activeViewModels.Add(viewModelType, newInstance);
+            UpdateViewManager();
             return newInstance;
         }
 

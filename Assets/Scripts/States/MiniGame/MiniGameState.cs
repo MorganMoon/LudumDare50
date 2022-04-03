@@ -1,6 +1,9 @@
 ﻿using Cerberus;
 using LudumDare50.Client.Data;
 using LudumDare50.Client.Game;
+using LudumDare50.Client.Infrastructure;
+using LudumDare50.Client.ViewModels;
+using Zenject;
 
 namespace LudumDare50.Client.States.MiniGame
 {
@@ -20,15 +23,24 @@ namespace LudumDare50.Client.States.MiniGame
     {
         private readonly ITaskService _taskService;
         private readonly IInventory _inventory;
+        private readonly IScreenService _screenService;
 
-        public MiniGameState(ITaskService taskService, IInventory inventory)
+        [Inject]
+        public MiniGameState(ITaskService taskService, IInventory inventory, IScreenService screenService)
         {
             _taskService = taskService;
             _inventory = inventory;
+            _screenService = screenService;
+        }
+
+        public override void OnEnter()
+        {
+            _screenService.AddToScreen<MiniGameViewModel>();
         }
 
         public override void OnExit()
         {
+            _screenService.RemoveFromScreen<MiniGameViewModel>();
             _taskService.Reset();
         }
 

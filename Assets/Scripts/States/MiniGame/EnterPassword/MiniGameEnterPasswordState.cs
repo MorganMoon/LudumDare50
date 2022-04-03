@@ -3,6 +3,7 @@ using UnityEngine;
 using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.ViewModels.MiniGame.EnterPassword;
 using Zenject;
+using LudumDare50.Client.Settings;
 
 namespace LudumDare50.Client.States.MiniGame.EnterPassword
 {
@@ -11,33 +12,28 @@ namespace LudumDare50.Client.States.MiniGame.EnterPassword
 
     }
 
-    public class MiniGameEnterPasswordState : State, ITickable
+    public class MiniGameEnterPasswordState : State
     {
         private readonly IScreenService _screenService;
+        private readonly EnterPasswordSettings _enterPasswordSettings;
 
-        public MiniGameEnterPasswordState(IScreenService screenService)
+        [Inject]
+        public MiniGameEnterPasswordState(IScreenService screenService, EnterPasswordSettings enterPasswordSettings)
         {
             _screenService = screenService;
+            _enterPasswordSettings = enterPasswordSettings;
         }
 
         public override void OnEnter()
         {
-            _screenService.AddToScreen<EnterPasswordViewModel>();
-            Debug.Log("EnterPassword game started!");
+            int randomIndex = Random.Range(0, _enterPasswordSettings.passwords.Length);
+            string password = _enterPasswordSettings.passwords[randomIndex];
+            _screenService.AddToScreen<EnterPasswordViewModel, string>(password);
         }
 
         public override void OnExit()
         {
             _screenService.RemoveFromScreen<EnterPasswordViewModel>();
-            Debug.Log("EnterPassword game finished!");
-        }
-
-        public void Tick()
-        {
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-                Debug.Log("PRESSED ENTER!");
-            }
         }
     }
 }

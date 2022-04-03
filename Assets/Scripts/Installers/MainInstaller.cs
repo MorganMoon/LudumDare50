@@ -23,6 +23,8 @@ namespace LudumDare50.Client.Installers
         private StatusEffectSettings _statusEffectSettings;
         [SerializeField]
         private MiniGameSpamPopupsSettings _miniGameSpamPopupsSettings;
+        [SerializeField]
+        private EnterPasswordSettings _enterPasswordSettings;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -43,6 +45,7 @@ namespace LudumDare50.Client.Installers
             //Settings
             Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
             Container.Bind<SleepSettings>().FromInstance(_sleepSettings);
+            Container.Bind<EnterPasswordSettings>().FromInstance(_enterPasswordSettings);
             Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
             Container.Bind<MiniGameSpamPopupsSettings>().FromInstance(_miniGameSpamPopupsSettings);
 

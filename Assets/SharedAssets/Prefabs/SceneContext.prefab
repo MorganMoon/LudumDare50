@@ -91,3 +91,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewManager: {fileID: 0}
+  _tiredReasonSettings: {fileID: 11400000, guid: 8fe631631ab0449fcb8dbbe9be90721d, type: 2}

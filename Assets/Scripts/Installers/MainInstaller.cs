@@ -2,6 +2,7 @@
 using LudumDare50.Client.Game.Implementation;
 using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.Infrastructure.Implementation;
+using LudumDare50.Client.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,10 @@ namespace LudumDare50.Client.Installers
     {
         [SerializeField]
         private ViewManager _viewManager;
+
+        [Header("Settings")]
+        [SerializeField]
+        private TiredReasonSettings _tiredReasonSettings;
 
         public override void InstallBindings()
         {
@@ -22,6 +27,9 @@ namespace LudumDare50.Client.Installers
             Container.Bind<IInventory>().To<Inventory>().AsSingle();
             Container.Bind<IGameTime>().To<GameTime>().AsSingle();
             Container.Bind(typeof(ITaskService), typeof(ITickable)).To<TaskService>().AsSingle();
+
+            //Settings
+            Container.Bind<TiredReasonSettings>().FromInstance(_tiredReasonSettings);
         }
     }
 }

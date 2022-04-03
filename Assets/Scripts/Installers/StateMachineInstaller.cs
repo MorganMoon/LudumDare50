@@ -4,6 +4,7 @@ using Cerberus.IoC;
 using LudumDare50.Client.StateHandler;
 using LudumDare50.Client.States;
 using LudumDare50.Client.States.Credits;
+using LudumDare50.Client.States.GameIntroduction;
 using LudumDare50.Client.States.GameOver;
 using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
@@ -38,7 +39,7 @@ namespace LudumDare50.Client.Installers
             return new StateMachineBuilder<GameState>(new ZenjectStateMachineContainer(Container))
                 .AddStateHandler<ITickable, TickableStateHandler>()
                 .State<StartupState, StartupStateEvent, StartupStateSubState>(GameState.Startup)
-                    .AddEvent(StartupStateEvent.PlayGame, (stateEvent) => stateEvent.ChangeState(GameState.Gameplay))
+                    .AddEvent(StartupStateEvent.PlayGame, (stateEvent) => stateEvent.ChangeState(GameState.GameIntroduction))
                     .State<MainMenuState, MainMenuStateEvent>(StartupStateSubState.MainMenu)
                         .AddEvent(MainMenuStateEvent.Settings, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.SettingsMenu))
                         .AddEvent(MainMenuStateEvent.Credits, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.CreditsMenu))
@@ -49,6 +50,9 @@ namespace LudumDare50.Client.Installers
                     .State<CreditsState, CreditsStateEvent>(StartupStateSubState.CreditsMenu)
                         .AddEvent(CreditsStateEvent.GoBack, (stateEvent) => stateEvent.ChangeState(StartupStateSubState.MainMenu))
                     .End()
+                .End()
+                .State<GameIntroductionState, GameIntroductionStateEvent>(GameState.GameIntroduction)
+                    .AddEvent(GameIntroductionStateEvent.Continue, (stateEvent) => stateEvent.ChangeState(GameState.Gameplay))
                 .End()
                 .State<GameplayState, GameplayStateEvent, GameplayStateSubState>(GameState.Gameplay)
                     .AddEvent(GameplayStateEvent.GameOver, (stateEvent) => stateEvent.ChangeState(GameState.GameOver))

@@ -27,7 +27,8 @@ namespace LudumDare50.Client.Game.Implementation
         {
             var currentAmount = GetItem(inventoryItem.Type);
 
-            return currentAmount.Count <= inventoryItem.Count;
+            var temp = currentAmount.Count >= inventoryItem.Count;
+            return temp;
         }
     }
 }

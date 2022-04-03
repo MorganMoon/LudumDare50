@@ -60,7 +60,12 @@ namespace LudumDare50.Client.Installers
                         .AddEvent(OfficeStateEvent.StartMiniGame, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.MiniGame))
                     .End()
                     .State<MiniGameState, MiniGameStateEvent, MiniGameStateSubState>(GameplayStateSubState.MiniGame)
-                        .AddEvent(MiniGameStateEvent.Success, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.Office))
+                        .AddEvent(MiniGameStateEvent.Success, (stateEvent) =>
+                        {
+                            stateEvent.StateInstance.OnSuccess();
+                            stateEvent.ChangeState(GameplayStateSubState.Office);
+                        })
+                        .AddEvent(MiniGameStateEvent.Failure, (stateEvent) => stateEvent.ChangeState(GameplayStateSubState.Office))
                         .State<MiniGameInitializeState, MiniGameInitializeStateEvent>(MiniGameStateSubState.Initialize)
                             .AddEvent(MiniGameInitializeStateEvent.PlayClickABunch, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.ClickABunchMiniGame))
                         .End()

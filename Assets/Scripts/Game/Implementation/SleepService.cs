@@ -41,7 +41,7 @@ namespace LudumDare50.Client.Game.Implementation
 
         public bool TrySleep()
         {
-            if(_wakeTimer > 0)
+            if(!_canSleep || _wakeTimer > 0)
             {
                 return false;
             }

@@ -42,7 +42,13 @@ namespace LudumDare50.Client.Game.Implementation
 
         public bool TrySleep()
         {
-            if(!_canSleep || _wakeTimer > 0)
+            if(!_canSleep)
+            {
+                CaughtPenalty();
+                return false;
+            }
+
+            if(_wakeTimer > 0)
             {
                 return false;
             }
@@ -56,8 +62,7 @@ namespace LudumDare50.Client.Game.Implementation
             //If were caught asleep, we want to stop the player from trying to sleep again for some time
             if (IsAsleep)
             {
-                _wakeTimer = _sleepSettings.CaughtAsleepForceAwakeTimeAmount;
-                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - _sleepSettings.CaughtAsleepEnergyPenalty, 0));
+                CaughtPenalty();
             }
             IsAsleep = false;
             _canSleep = false;
@@ -89,6 +94,12 @@ namespace LudumDare50.Client.Game.Implementation
             {
                 _canSleep = true;
             }
+        }
+
+        private void CaughtPenalty()
+        {
+            _wakeTimer = _sleepSettings.CaughtAsleepForceAwakeTimeAmount;
+            Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - _sleepSettings.CaughtAsleepEnergyPenalty, 0));
         }
     }
 }

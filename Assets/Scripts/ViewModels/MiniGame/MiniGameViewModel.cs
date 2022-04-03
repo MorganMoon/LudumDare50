@@ -1,8 +1,4 @@
 using Cerberus;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using LudumDare50.Client.StateHandler;
 using LudumDare50.Client.States.MiniGame;
 using Zenject;
 

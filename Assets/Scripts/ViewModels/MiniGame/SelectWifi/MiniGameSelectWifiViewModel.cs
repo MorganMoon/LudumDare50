@@ -1,9 +1,14 @@
+using Cerberus;
+using LudumDare50.Client.States.MiniGame;
 using UnityEngine;
+using Zenject;
 
 namespace LudumDare50.Client.ViewModels.SelectWifi
 {
     public class MiniGameSelectWifiViewModel : ViewModel<string[]>
     {
+        private readonly IStateController<MiniGameStateEvent> _miniGameStateController;
+
         private string[] _wifiNames;
         public string[] WifiNames
         {
@@ -33,16 +38,22 @@ namespace LudumDare50.Client.ViewModels.SelectWifi
                 OnPropertyChanged();
             }
         }
-
-        public void OnExpectedWifiButtonPressed()
+        
+        [Inject]
+        public MiniGameSelectWifiViewModel(IStateController<MiniGameStateEvent> miniGameStateController)
         {
-
+            _miniGameStateController = miniGameStateController;
         }
 
         public override void Prepare(string[] parameter)
         {
             WifiNames = parameter;
             ExpectedWifiName = parameter[Random.Range(0, parameter.Length)];
+        }
+
+        public void OnExpectedWifiButtonPressed()
+        {
+            _miniGameStateController.TriggerEvent(MiniGameStateEvent.Success);
         }
     }
 }

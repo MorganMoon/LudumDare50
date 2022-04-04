@@ -34,7 +34,8 @@ namespace LudumDare50.Client.ViewModels.SelectWifi
             }, nameof(ViewModel.WifiNames));
             Bind<string>((expectedWifiName) =>
             {
-                foreach(var entry in _entries)
+                _wifiNameNoteText.text = expectedWifiName;
+                foreach (var entry in _entries)
                 {
                     entry.IsExpected = entry.WifiName == expectedWifiName;
                 }

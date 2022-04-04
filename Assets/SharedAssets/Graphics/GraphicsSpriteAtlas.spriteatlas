@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GraphicsSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c782a70af85b72c4b863e79472aa397f, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 76b8c1c1bd563274aad91d6e8ec73023, type: 3}
+  - {fileID: 21300000, guid: dc5914b2001af46f78a2267e9354df88, type: 3}
+  - {fileID: 21300000, guid: 02073874fb515a34099b1f4722ea14d8, type: 3}
+  - {fileID: 21300000, guid: 60e8dc157366d764b99e8af23e478517, type: 3}
+  - {fileID: 21300000, guid: bdb8948876c9dc044906f7107af38718, type: 3}
+  - {fileID: 21300000, guid: 0a713ac8e82bae0438de47210f02d5ff, type: 3}
+  - {fileID: 21300000, guid: 8bf6328a2cde11847a41c5c87efd8350, type: 3}
+  - {fileID: 21300000, guid: 00f45d1bdcb1c374ab9db3d41e8a32f3, type: 3}
+  - {fileID: 21300000, guid: c74ce48b40eb7204caf0310697553d4f, type: 3}
+  - {fileID: 1152356169552002576, guid: fc504e9c95f3bdd43bdde3ebc6dd7ab2, type: 3}
+  - {fileID: 21300000, guid: 907a156d1b4e29246beb0059c67f40bd, type: 3}
+  - {fileID: 21300000, guid: 6be6918d493d72e4fa264ae2b2f86a10, type: 3}
+  - {fileID: 21300000, guid: 51e0c48fac9367641b74f4146a1a7730, type: 3}
+  - {fileID: 21300000, guid: c343d0cf588da9447bf7932a40be5e63, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GreenCheckMark
+  - ActionBubble
+  - RedXFromTeenTitans
+  - hands
+  - OtherRedX
+  - Professional-Cubicle-870x519-v2
+  - AwfullyHotCoffeePot 1
+  - asleepofficechgairguy
+  - lockicon
+  - computer_0
+  - Harold
+  - wifisymbol
+  - wasd
+  - officechairguy
+  m_RenderDataMap: {}
+  m_Tag: GraphicsSpriteAtlas
+  m_IsVariant: 0

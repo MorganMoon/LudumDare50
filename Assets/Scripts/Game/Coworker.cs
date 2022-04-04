@@ -10,14 +10,17 @@ namespace LudumDare50.Client.Game
         [SerializeField]
         [Min(0)]
         private float standByTime;
+        private float _selectedStandByTime;
 
         [SerializeField]
         [Min(0)]
         private float greetWaitTime;
+        private float _selectedGreetWaitTime;
 
         [SerializeField]
         [Min(0)]
         private float watchTime;
+        private float _selectedWatchTime;
 
         private Animator _animator;
 
@@ -35,6 +38,13 @@ namespace LudumDare50.Client.Game
             _sleepService = sleepService;
         }
 
+        private void Awake()
+        {
+            _selectedStandByTime = standByTime;
+            _selectedGreetWaitTime = greetWaitTime;
+            _selectedWatchTime = watchTime;
+        }
+
         void Start()
         {
             _animator = GetComponent<Animator>();
@@ -46,20 +56,22 @@ namespace LudumDare50.Client.Game
             if (_standingBy)
             {
                 _elapsedTime += Time.deltaTime;
-                if (_elapsedTime >= standByTime)
+                if (_elapsedTime >= _selectedStandByTime)
                 {
                     _animator.SetTrigger("Approach");
                     _standingBy = false;
+                    _selectedStandByTime = standByTime + Random.Range(-0.5f, 0.1f);
                 }
             }
 
             if (_waitingToGreet)
             {
                 _elapsedTime += Time.deltaTime;
-                if (_elapsedTime >= greetWaitTime)
+                if (_elapsedTime >= _selectedGreetWaitTime)
                 {
                     _waitingToGreet = false;
                     _animator.SetTrigger("Greet");
+                    _selectedGreetWaitTime = greetWaitTime + Random.Range(-0.3f, 0.3f);
                 }
             }
 
@@ -67,12 +79,13 @@ namespace LudumDare50.Client.Game
             {
                 _elapsedTime += Time.deltaTime;
                 _sleepService.WakeUp();
-                if (_elapsedTime >= watchTime)
+                if (_elapsedTime >= _selectedWatchTime)
                 {
                     _watching = false;
                     _animator.SetTrigger("Leave");
                     _elapsedTime = 0;
                     _standingBy = true;
+                    _selectedWatchTime = watchTime + Random.Range(-0.1f, 0.5f);
                 }
             }
         }

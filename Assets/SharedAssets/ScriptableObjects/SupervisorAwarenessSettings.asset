@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc4c8ce7a8e25b42aa44d054bee79b1, type: 3}
   m_Name: SupervisorAwarenessSettings
   m_EditorClassIdentifier: 
-  MaxFailures: 0
-  NumberOfTasksToRecover: 0
+  MaxFailures: 3
+  NumberOfTasksToRecover: 2

@@ -19,6 +19,7 @@ using LudumDare50.Client.States.Settings;
 using LudumDare50.Client.States.Startup;
 using System;
 using Zenject;
+using LudumDare50.Client.States.MiniGame.SelectWifi;
 
 namespace LudumDare50.Client.Installers
 {
@@ -74,6 +75,7 @@ namespace LudumDare50.Client.Installers
                             .AddEvent(MiniGameInitializeStateEvent.PlayEnterPassword, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.EnterPasswordMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlaySpamPopups, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SpamPopupsMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlayCollectApples, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.CollectApplesMiniGame))
+                            .AddEvent(MiniGameInitializeStateEvent.PlaySelectWifi, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SelectWifiMiniGame))
                         .End()
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
                         .End()
@@ -83,6 +85,8 @@ namespace LudumDare50.Client.Installers
                             .AddEvent(MiniGameCollectApplesStateEvent.AppleCollected, (stateEvent) => stateEvent.StateInstance.OnAppleCollected())
                         .End()
                         .State<MiniGameEnterPasswordState, MiniGameEnterPasswordStateEvent>(MiniGameStateSubState.EnterPasswordMiniGame)
+                        .End()
+                        .State<MiniGameSelectWifiState, MiniGameSelectWifiStateEvent>(MiniGameStateSubState.SelectWifiMiniGame)
                         .End()
                     .End()
                 .End()

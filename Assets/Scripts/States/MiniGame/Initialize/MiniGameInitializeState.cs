@@ -11,7 +11,8 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
         PlayClickABunch,
         PlaySpamPopups,
         PlayEnterPassword,
-        PlayCollectApples
+        PlayCollectApples,
+        PlaySelectWifi
     }
 
     public class MiniGameInitializeState : State

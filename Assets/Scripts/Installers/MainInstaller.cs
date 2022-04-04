@@ -4,6 +4,7 @@ using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.Infrastructure.Implementation;
 using LudumDare50.Client.Settings;
 using LudumDare50.Client.ViewModels.ClickABunch;
+using LudumDare50.Client.ViewModels.SelectWifi;
 using UnityEngine;
 using Zenject;
 
@@ -31,6 +32,8 @@ namespace LudumDare50.Client.Installers
         [Header("Prefabs")]
         [SerializeField]
         private MiniGameSpamPopupsViewPopupEntry _miniGameSpamPopupsViewPopupEntry;
+        [SerializeField]
+        private MiniGameSelectWifiViewEntry _miniGameSelectWifiViewEntry;
 
         public override void InstallBindings()
         {
@@ -54,6 +57,7 @@ namespace LudumDare50.Client.Installers
 
             //Factoires
             Container.BindFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry, MiniGameSpamPopupsViewPopupEntry.Factory>().FromComponentInNewPrefab(_miniGameSpamPopupsViewPopupEntry);
+            Container.BindFactory<string, bool, MiniGameSelectWifiViewModel, MiniGameSelectWifiViewEntry, MiniGameSelectWifiViewEntry.Factory>().FromComponentInNewPrefab(_miniGameSelectWifiViewEntry);
         }
     }
 }

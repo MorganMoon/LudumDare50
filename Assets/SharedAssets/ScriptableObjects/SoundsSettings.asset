@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGameSuccess: {fileID: 8300000, guid: 228cd78a4ef6f7342b13bdcc119e89ae, type: 3}
   miniGameSuccessVolume: 0.5
+  coffeeDrinking: {fileID: 8300000, guid: 8360cce63f9fcaf4aa7478e23cf85fea, type: 3}
+  coffeeDrinkingVolume: 0.7

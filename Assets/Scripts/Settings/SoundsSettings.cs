@@ -10,5 +10,8 @@ namespace LudumDare50.Client.Settings
         public AudioClip miniGameSuccess;
         [Range(0, 1)]
         public float miniGameSuccessVolume;
+        public AudioClip coffeeDrinking;
+        [Range(0, 1)]
+        public float coffeeDrinkingVolume;
     }
 }

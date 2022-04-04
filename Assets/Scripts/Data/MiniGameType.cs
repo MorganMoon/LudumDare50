@@ -6,5 +6,6 @@ namespace LudumDare50.Client.Data
         SpamPopups,
         EnterPassword,
         CollectApples,
+        SelectWifi
     }
 }

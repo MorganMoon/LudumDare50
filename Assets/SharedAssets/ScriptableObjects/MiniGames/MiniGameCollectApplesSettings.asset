@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5758319af84fb44f5b8c59ca62897c43, type: 3}
-  m_Name: SleepSettings
+  m_Script: {fileID: 11500000, guid: 92f3a50e82699c04398d5b6045ef1396, type: 3}
+  m_Name: MiniGameCollectApplesSettings
   m_EditorClassIdentifier: 
-  StartingEnergy: 20
-  EnergySleepAdditionMultiplier: 0.5
-  EnergyAwakeSubtractionMultiplier: 1
-  CaughtAsleepForceAwakeTimeAmount: 3
-  CaughtAsleepEnergyPenalty: 0
+  AppleAmount: 5
+  PlayerSpeed: 3

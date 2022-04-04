@@ -1,9 +1,13 @@
+using LudumDare50.Client.Settings;
 using UnityEngine;
+using Zenject;
 
 namespace LudumDare50.Client.Visuals.MiniGame.CollectApples
 {
     public class CollectApplesCharacterController : MonoBehaviour
     {
+        [Inject]
+        private MiniGameCollectApplesSettings _miniGameCollectApplesSettings;
         [SerializeField]
         private Animator _animator;
 
@@ -27,7 +31,7 @@ namespace LudumDare50.Client.Visuals.MiniGame.CollectApples
                 var verticalMovement = Input.GetAxis("Vertical");
                 _animator.SetFloat("Vertical", verticalMovement);
                 _animator.SetFloat("Horizontal", 0);
-                transform.localPosition += new Vector3(0, verticalMovement * Time.deltaTime * 3, 0);
+                transform.localPosition += new Vector3(0, verticalMovement * Time.deltaTime * _miniGameCollectApplesSettings.PlayerSpeed, 0);
                 if (transform.localPosition.y > 3.6f)
                 {
                     transform.localPosition = new Vector3(transform.localPosition.x, 3.6f, transform.localPosition.z);
@@ -43,7 +47,7 @@ namespace LudumDare50.Client.Visuals.MiniGame.CollectApples
                 var horizontalMovement = Input.GetAxis("Horizontal");
                 _animator.SetFloat("Vertical", 0);
                 _animator.SetFloat("Horizontal", horizontalMovement);
-                transform.localPosition += new Vector3(horizontalMovement * Time.deltaTime * 3, 0, 0);
+                transform.localPosition += new Vector3(horizontalMovement * Time.deltaTime * _miniGameCollectApplesSettings.PlayerSpeed, 0, 0);
                 if(transform.localPosition.x > 4.5f)
                 {
                     transform.localPosition = new Vector3(4.5f, transform.localPosition.y, transform.localPosition.z);

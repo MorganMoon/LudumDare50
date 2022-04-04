@@ -41,7 +41,7 @@ namespace LudumDare50.Client.ViewModels.ClickABunch
                 {
                     var entry = _entryFactory.Create(index, this);
                     entry.transform.SetParent(_entryParent, false);
-                    entry.transform.localPosition = new Vector3(Random.Range(-392f, 392f), Random.Range(-230f, 230f), 0);
+                    entry.transform.localPosition = new Vector3(Random.Range(-392f, 295f), Random.Range(-230f, 230f), 0);
                     _popupEntries[index] = entry;
                 }
             }

@@ -27,6 +27,8 @@ namespace LudumDare50.Client.Installers
         private EnterPasswordSettings _enterPasswordSettings;
         [SerializeField]
         private MiniGameCollectApplesSettings _miniGameCollectApplesSettings;
+        [SerializeField]
+        private SoundsSettings _soundsSettings;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -51,6 +53,7 @@ namespace LudumDare50.Client.Installers
             Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
             Container.Bind<MiniGameSpamPopupsSettings>().FromInstance(_miniGameSpamPopupsSettings);
             Container.Bind<MiniGameCollectApplesSettings>().FromInstance(_miniGameCollectApplesSettings);
+            Container.Bind<SoundsSettings>().FromInstance(_soundsSettings);
 
             //Factoires
             Container.BindFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry, MiniGameSpamPopupsViewPopupEntry.Factory>().FromComponentInNewPrefab(_miniGameSpamPopupsViewPopupEntry);

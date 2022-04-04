@@ -2,7 +2,9 @@
 using LudumDare50.Client.Data;
 using LudumDare50.Client.Game;
 using LudumDare50.Client.Infrastructure;
+using LudumDare50.Client.Settings;
 using LudumDare50.Client.ViewModels.MiniGame;
+using UnityEngine;
 using Zenject;
 
 namespace LudumDare50.Client.States.MiniGame
@@ -27,13 +29,15 @@ namespace LudumDare50.Client.States.MiniGame
         private readonly ITaskService _taskService;
         private readonly IInventory _inventory;
         private readonly IScreenService _screenService;
+        private readonly SoundsSettings _soundsSettings;
 
         [Inject]
-        public MiniGameState(ITaskService taskService, IInventory inventory, IScreenService screenService)
+        public MiniGameState(ITaskService taskService, IInventory inventory, IScreenService screenService, SoundsSettings soundsSettings)
         {
             _taskService = taskService;
             _inventory = inventory;
             _screenService = screenService;
+            _soundsSettings = soundsSettings;
         }
 
         public override void OnEnter()
@@ -49,6 +53,7 @@ namespace LudumDare50.Client.States.MiniGame
 
         public void OnSuccess()
         {
+            AudioSource.PlayClipAtPoint(_soundsSettings.miniGameSuccess, Vector3.zero, _soundsSettings.miniGameSuccessVolume);
             var money = _inventory.GetItem(InventoryItemType.Money);
             _inventory.SetItem(new InventoryItem(InventoryItemType.Money, money.Count + _taskService.GetTask().Payout));
         }

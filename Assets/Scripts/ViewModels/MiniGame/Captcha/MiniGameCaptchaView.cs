@@ -1,18 +1,33 @@
+using LudumDare50.Client.ViewModels;
+using LudumDare50.Client.ViewModels.Captcha;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MiniGameCaptchaView : MonoBehaviour
+namespace LudumDare50.Client.ViewModels.Captcha
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MiniGameCaptchaView : View<MiniGameCaptchaViewModel>
     {
-        
-    }
+        [SerializeField]
+        private List<Toggle> _toggleList;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void SetBindings()
+        {
+            Bind<bool[]>((something) =>
+            {
+                
+            }, nameof(ViewModel.NeededSelection));
+            Bind<bool[]>((somethingElse) =>
+            {
+
+            }, nameof(ViewModel.PlayerSelections));
+        }
+
+        public void OnNotARobotButtonPressed()
+        {
+            ViewModel.OnNotARobotButtonPressed();
+        }
+
     }
 }

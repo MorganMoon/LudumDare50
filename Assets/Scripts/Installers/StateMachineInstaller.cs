@@ -9,6 +9,7 @@ using LudumDare50.Client.States.GameOver;
 using LudumDare50.Client.States.Gameplay;
 using LudumDare50.Client.States.MainMenu;
 using LudumDare50.Client.States.MiniGame;
+using LudumDare50.Client.States.MiniGame.Captcha;
 using LudumDare50.Client.States.MiniGame.ClickABunch;
 using LudumDare50.Client.States.MiniGame.Initialize;
 using LudumDare50.Client.States.MiniGame.SpamPopups;
@@ -70,10 +71,13 @@ namespace LudumDare50.Client.Installers
                         .State<MiniGameInitializeState, MiniGameInitializeStateEvent>(MiniGameStateSubState.Initialize)
                             .AddEvent(MiniGameInitializeStateEvent.PlayClickABunch, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.ClickABunchMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlaySpamPopups, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SpamPopupsMiniGame))
+                            .AddEvent(MiniGameInitializeStateEvent.PlayCaptcha, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.CaptchaMiniGame))
                         .End()
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
                         .End()
                         .State<MiniGameSpamPopupsState, MiniGameSpamPopupsStateEvent>(MiniGameStateSubState.SpamPopupsMiniGame)
+                        .End()
+                        .State<MiniGameCaptchaState, MiniGameCaptchaStateEvent>(MiniGameStateSubState.CaptchaMiniGame)
                         .End()
                     .End()
                 .End()

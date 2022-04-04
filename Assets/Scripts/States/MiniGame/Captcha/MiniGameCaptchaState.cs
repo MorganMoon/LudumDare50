@@ -20,7 +20,8 @@ namespace LudumDare50.Client.States.MiniGame.Captcha
 
         public override void OnEnter()
         {
-            _screenService.AddToScreen<MiniGameCaptchaViewModel>();
+            var captchaVM = _screenService.AddToScreen<MiniGameCaptchaViewModel>();
+            captchaVM.Startup();
         }
 
         public override void OnExit()

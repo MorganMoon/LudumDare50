@@ -9,7 +9,8 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
     {
         Exit,
         PlayClickABunch,
-        PlaySpamPopups
+        PlaySpamPopups,
+        PlayCaptcha
     }
 
     public class MiniGameInitializeState : State
@@ -24,7 +25,8 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
 
         public override void OnEnter()
         {
-            var randomMiniGame = (MiniGameType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(MiniGameType)).Length);
+            //var randomMiniGame = (MiniGameType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(MiniGameType)).Length);
+            var randomMiniGame = MiniGameType.Captcha;
             //Play some animation bringing up the minigame
             _miniGameInitializeStateController.TriggerEvent(MiniGameTypeToStateEvent(randomMiniGame));
         }

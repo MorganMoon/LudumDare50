@@ -15,6 +15,9 @@ namespace LudumDare50.Client.ViewModels.Energy
         [SerializeField]
         private Image _fillImage;
 
+        [SerializeField]
+        private GameObject _warningBanner;
+
         protected override void SetBindings()
         {
             _energyText.text = "0/0";
@@ -41,6 +44,7 @@ namespace LudumDare50.Client.ViewModels.Energy
 
                 }
             }, nameof(ViewModel.CurrentEnergy));
+            Bind<bool>((canSleep) => _warningBanner.SetActive(!canSleep), nameof(ViewModel.CanSleep));
         }
     }
 }

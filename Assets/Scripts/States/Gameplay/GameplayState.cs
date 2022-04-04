@@ -62,6 +62,7 @@ namespace LudumDare50.Client.States.Gameplay
             if(_screenService.TryGetViewModel<EnergyViewModel>(out var energyViewModel))
             {
                 energyViewModel.CurrentEnergy = _sleepService.Energy.Current;
+                energyViewModel.CanSleep = !_sleepService.IsCaught;
             }
 
             if(_sleepService.Energy.Current <= 0)

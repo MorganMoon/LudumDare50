@@ -6,6 +6,7 @@ namespace LudumDare50.Client.Game
     {
         Energy Energy { get; set; }
         bool IsAsleep { get; }
+        bool IsCaught { get; }
 
         void Start();
         void Stop();

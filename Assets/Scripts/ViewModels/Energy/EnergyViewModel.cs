@@ -38,6 +38,22 @@ namespace LudumDare50.Client.ViewModels.Energy
             }
         }
 
+        private bool _canSleep;
+        public bool CanSleep
+        {
+            get => _canSleep;
+            set
+            {
+                if(_canSleep == value)
+                {
+                    return;
+                }
+
+                _canSleep = value;
+                OnPropertyChanged();
+            }
+        }
+
         public override void Prepare(Data.Energy parameter)
         {
             MaxEnergy = parameter.Max;

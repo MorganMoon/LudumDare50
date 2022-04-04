@@ -11,6 +11,8 @@ namespace LudumDare50.Client.Game.Implementation
 
         public bool IsAsleep { get; private set; }
 
+        public bool IsCaught => _wakeTimer > 0;
+
         private readonly SleepSettings _sleepSettings;
 
         private float _wakeTimer = 0;

@@ -22,6 +22,7 @@ namespace LudumDare50.Client.Visuals
         private void Awake()
         {
             _taskService.OnTaskAvailabilityChanged += TaskService_OnTaskAvailabilityChanged;
+            TaskService_OnTaskAvailabilityChanged();
         }
 
         private void Update()

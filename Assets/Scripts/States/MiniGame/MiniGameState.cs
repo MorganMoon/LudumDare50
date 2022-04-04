@@ -58,6 +58,12 @@ namespace LudumDare50.Client.States.MiniGame
             AudioSource.PlayClipAtPoint(_soundsSettings.miniGameSuccess, Vector3.zero, _soundsSettings.miniGameSuccessVolume);
             var money = _inventory.GetItem(InventoryItemType.Money);
             _inventory.SetItem(new InventoryItem(InventoryItemType.Money, money.Count + _taskService.GetTask().Payout));
+            _taskService.TaskSuccess();
+        }
+
+        public void OnFailure()
+        {
+            _taskService.TaskFailure();
         }
     }
 }

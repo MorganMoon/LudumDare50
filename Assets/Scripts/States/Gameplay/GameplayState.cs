@@ -3,6 +3,7 @@ using LudumDare50.Client.Data;
 using LudumDare50.Client.Game;
 using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.ViewModels.Energy;
+using LudumDare50.Client.ViewModels.SupervisorAwareness;
 using UnityEngine;
 using Zenject;
 
@@ -23,17 +24,19 @@ namespace LudumDare50.Client.States.Gameplay
     {
         private readonly IScreenService _screenService;
         private readonly ISleepService _sleepService;
+        private readonly ITaskService _taskService;
         private readonly IStateController<GameplayStateEvent> _gameplayStateController;
         private readonly IGameTime _gameTime;
         private readonly ZenjectSceneLoader _zenjectSceneLoader;
 
         [Inject]
-        public GameplayState(IScreenService screenService, ISleepService sleepService,
+        public GameplayState(IScreenService screenService, ISleepService sleepService, ITaskService taskService,
             IStateController<GameplayStateEvent> gameplayStateController, IGameTime gameTime,
             ZenjectSceneLoader zenjectSceneLoader)
         {
             _screenService = screenService;
             _sleepService = sleepService;
+            _taskService = taskService;
             _gameplayStateController = gameplayStateController;
             _gameTime = gameTime;
             _zenjectSceneLoader = zenjectSceneLoader;
@@ -44,9 +47,11 @@ namespace LudumDare50.Client.States.Gameplay
             _zenjectSceneLoader.LoadScene("GameplayScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
             _sleepService.Start();
             _gameTime.Start();
+            _taskService.Start();
             _screenService.SetActiveScreen()
                 .With<EnergyViewModel, Energy>(_sleepService.Energy)
                 .With<MoneyViewModel>()
+                .With<SupervisorAwarenessViewModel, SupervisorAwareness>(_taskService.SupervisorAwareness)
                 .Build();
         }
 
@@ -65,7 +70,12 @@ namespace LudumDare50.Client.States.Gameplay
                 energyViewModel.CanSleep = !_sleepService.IsCaught;
             }
 
-            if(_sleepService.Energy.Current <= 0)
+            if (_screenService.TryGetViewModel<SupervisorAwarenessViewModel>(out var supervisorViewModel))
+            {
+                supervisorViewModel.CurrentFailures = _taskService.SupervisorAwareness.Current;
+            }
+
+            if (_sleepService.Energy.Current <= 0 || _taskService.SupervisorAwareness.Current >= _taskService.SupervisorAwareness.Max)
             {
                 _gameplayStateController.TriggerEvent(GameplayStateEvent.GameOver);
             }

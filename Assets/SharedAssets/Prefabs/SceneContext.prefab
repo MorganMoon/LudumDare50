@@ -97,4 +97,5 @@ MonoBehaviour:
   _statusEffectSettings: {fileID: 11400000, guid: 16028aefe1ad937489b1881839eec4ec, type: 2}
   _miniGameSpamPopupsSettings: {fileID: 11400000, guid: c243dcd74d748da43a77b310adf588fc, type: 2}
   _enterPasswordSettings: {fileID: 11400000, guid: 120b4bc8caf1b5b448d41d897a3e8cf9, type: 2}
+  _miniGameCollectApplesSettings: {fileID: 11400000, guid: 0c79d17b12785204a8f600df3b525556, type: 2}
   _miniGameSpamPopupsViewPopupEntry: {fileID: 4505178976089757094, guid: 90269ef681661384ea4a747d64327a61, type: 3}

@@ -19,5 +19,10 @@ namespace LudumDare50.Client.ViewModels.GameOver
         {
             ViewModel.OnContinueButtonPressed();
         }
+
+        public void OnPlayAgainButtonPressed()
+        {
+            ViewModel.OnPlayAgainButtonPressed();
+        }
     }
 }

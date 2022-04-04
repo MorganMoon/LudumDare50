@@ -92,6 +92,7 @@ namespace LudumDare50.Client.Installers
                 .End()
                 .State<GameOverState, GameOverStateEvent>(GameState.GameOver)
                     .AddEvent(GameOverStateEvent.Continue, (stateEvent) => stateEvent.ChangeState(GameState.Startup))
+                    .AddEvent(GameOverStateEvent.PlayAgain, (stateEvent) => stateEvent.ChangeState(GameState.GameIntroduction))
                 .End()
                 .Build();
         }

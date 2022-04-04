@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 337873482}
   - component: {fileID: 337873486}
-  - component: {fileID: 337873485}
   - component: {fileID: 337873484}
   - component: {fileID: 337873483}
   m_Layer: 0
@@ -186,14 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2038938392}
---- !u!81 &337873485
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337873481}
-  m_Enabled: 1
 --- !u!20 &337873486
 Camera:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ using LudumDare50.Client.States.Settings;
 using LudumDare50.Client.States.Startup;
 using System;
 using Zenject;
-using LudumDare50.Client.States.MiniGame.Captcha;
+using LudumDare50.Client.States.MiniGame.SelectWifi;
 
 namespace LudumDare50.Client.Installers
 {
@@ -75,7 +75,7 @@ namespace LudumDare50.Client.Installers
                             .AddEvent(MiniGameInitializeStateEvent.PlayEnterPassword, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.EnterPasswordMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlaySpamPopups, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SpamPopupsMiniGame))
                             .AddEvent(MiniGameInitializeStateEvent.PlayCollectApples, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.CollectApplesMiniGame))
-                            .AddEvent(MiniGameInitializeStateEvent.PlayCaptcha, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.CaptchaMiniGame))
+                            .AddEvent(MiniGameInitializeStateEvent.PlaySelectWifi, (stateEvent) => stateEvent.ChangeState(MiniGameStateSubState.SelectWifiMiniGame))
                         .End()
                         .State<MiniGameClickABunchState, MiniGameClickABunchStateEvent>(MiniGameStateSubState.ClickABunchMiniGame)
                         .End()
@@ -86,7 +86,7 @@ namespace LudumDare50.Client.Installers
                         .End()
                         .State<MiniGameEnterPasswordState, MiniGameEnterPasswordStateEvent>(MiniGameStateSubState.EnterPasswordMiniGame)
                         .End()
-                        .State<MiniGameCaptchaState, MiniGameCaptchaStateEvent>(MiniGameStateSubState.CaptchaMiniGame)
+                        .State<MiniGameSelectWifiState, MiniGameSelectWifiStateEvent>(MiniGameStateSubState.SelectWifiMiniGame)
                         .End()
                     .End()
                 .End()

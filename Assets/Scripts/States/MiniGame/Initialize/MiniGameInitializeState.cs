@@ -12,7 +12,7 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
         PlaySpamPopups,
         PlayEnterPassword,
         PlayCollectApples,
-        PlayCaptcha
+        PlaySelectWifi
     }
 
     public class MiniGameInitializeState : State
@@ -27,8 +27,7 @@ namespace LudumDare50.Client.States.MiniGame.Initialize
 
         public override void OnEnter()
         {
-            //var randomMiniGame = (MiniGameType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(MiniGameType)).Length);
-            var randomMiniGame = MiniGameType.Captcha;
+            var randomMiniGame = (MiniGameType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(MiniGameType)).Length);
             //Play some animation bringing up the minigame
             _miniGameInitializeStateController.TriggerEvent(MiniGameTypeToStateEvent(randomMiniGame));
         }

@@ -4,6 +4,7 @@ using LudumDare50.Client.Infrastructure;
 using LudumDare50.Client.Infrastructure.Implementation;
 using LudumDare50.Client.Settings;
 using LudumDare50.Client.ViewModels.ClickABunch;
+using LudumDare50.Client.ViewModels.SelectWifi;
 using UnityEngine;
 using Zenject;
 
@@ -27,10 +28,16 @@ namespace LudumDare50.Client.Installers
         private EnterPasswordSettings _enterPasswordSettings;
         [SerializeField]
         private MiniGameCollectApplesSettings _miniGameCollectApplesSettings;
+        [SerializeField]
+        private SoundsSettings _soundsSettings;
+        [SerializeField]
+        private MiniGameSelectWifiSettings _miniGameSelectWifiSettings;
 
         [Header("Prefabs")]
         [SerializeField]
         private MiniGameSpamPopupsViewPopupEntry _miniGameSpamPopupsViewPopupEntry;
+        [SerializeField]
+        private MiniGameSelectWifiViewEntry _miniGameSelectWifiViewEntry;
 
         public override void InstallBindings()
         {
@@ -51,9 +58,12 @@ namespace LudumDare50.Client.Installers
             Container.Bind<StatusEffectSettings>().FromInstance(_statusEffectSettings);
             Container.Bind<MiniGameSpamPopupsSettings>().FromInstance(_miniGameSpamPopupsSettings);
             Container.Bind<MiniGameCollectApplesSettings>().FromInstance(_miniGameCollectApplesSettings);
+            Container.Bind<SoundsSettings>().FromInstance(_soundsSettings);
+            Container.Bind<MiniGameSelectWifiSettings>().FromInstance(_miniGameSelectWifiSettings);
 
             //Factoires
             Container.BindFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry, MiniGameSpamPopupsViewPopupEntry.Factory>().FromComponentInNewPrefab(_miniGameSpamPopupsViewPopupEntry);
+            Container.BindFactory<string, bool, MiniGameSelectWifiViewModel, MiniGameSelectWifiViewEntry, MiniGameSelectWifiViewEntry.Factory>().FromComponentInNewPrefab(_miniGameSelectWifiViewEntry);
         }
     }
 }

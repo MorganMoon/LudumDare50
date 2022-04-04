@@ -38,7 +38,7 @@ namespace LudumDare50.Client.ViewModels.Energy
             }
         }
 
-        private bool _canSleep;
+        private bool _canSleep = true;
         public bool CanSleep
         {
             get => _canSleep;

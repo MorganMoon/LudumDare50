@@ -14,19 +14,18 @@ namespace LudumDare50.Client.ViewModels.Captcha
 
         protected override void SetBindings()
         {
-            Bind<bool[]>((something) =>
-            {
-                
-            }, nameof(ViewModel.NeededSelection));
-            Bind<bool[]>((somethingElse) =>
-            {
-
-            }, nameof(ViewModel.PlayerSelections));
+            ViewModel.Toggles = _toggleList;
         }
 
         public void OnNotARobotButtonPressed()
         {
-            ViewModel.OnNotARobotButtonPressed();
+            var playerSelectionList = new List<bool>();
+            foreach(var toggle in _toggleList)
+            {
+                playerSelectionList.Add(toggle.isOn);
+            }
+
+            ViewModel.OnNotARobotButtonPressed(playerSelectionList);
         }
 
     }

@@ -916,7 +916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
       propertyPath: DialogOptions.Array.size
-      value: 9
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
       propertyPath: DialogOptions.Array.data[0]
@@ -953,6 +953,98 @@ PrefabInstance:
     - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
       propertyPath: DialogOptions.Array.data[8]
       value: What do you think of this crazy weather were having?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[9]
+      value: Hide the pain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[10]
+      value: So how about the coffee we have here? Yuck!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[11]
+      value: So, can you tell me how to buy bitcoin? My mother was interested
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[12]
+      value: Did I hear you say NFT? I love those!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[13]
+      value: Stakeholders say there is soon to be a mass layoff
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[14]
+      value: Just livin' the dream
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[15]
+      value: This place ain't a job. It's a lifestyle!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[16]
+      value: How are those machine learnings coming?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[17]
+      value: Having fun yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[18]
+      value: Let's not try and reinvent the wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[19]
+      value: Are you busy?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[20]
+      value: Look's someone has a case of the Monday's
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[21]
+      value: Ping
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[22]
+      value: I am sooooo busy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[23]
+      value: 'It''s humpday! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[24]
+      value: There is free cake in the breakroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[25]
+      value: Have you seen my pen?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[26]
+      value: Have you seen my stapler?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[27]
+      value: Send me a ping in 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[28]
+      value: Let's punt the 2 o'clock to 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[29]
+      value: Those sandwhiches you bring are tasty!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[30]
+      value: Block out Thursday on your Calendar!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714252162323694516, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}
+      propertyPath: DialogOptions.Array.data[31]
+      value: Block out Thursday on your Calendar!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dd9e74fd1d0b14b9b0dd07509642da, type: 3}

@@ -82,7 +82,7 @@ namespace LudumDare50.Client.Game.Implementation
 
         private void SetNewTask()
         {
-            var startTime = DateTime.UtcNow.AddSeconds(UnityEngine.Random.Range(3f, 10f));
+            var startTime = DateTime.UtcNow.AddSeconds(UnityEngine.Random.Range(2f, 8f));
             _currentTask =  new GameTask(startTime, startTime.AddSeconds(UnityEngine.Random.Range(5f, 10f)), 1, false);
             OnTaskAvailabilityChanged?.Invoke();
         }

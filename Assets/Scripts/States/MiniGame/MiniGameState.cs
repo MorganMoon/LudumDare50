@@ -2,7 +2,7 @@
 using LudumDare50.Client.Data;
 using LudumDare50.Client.Game;
 using LudumDare50.Client.Infrastructure;
-using LudumDare50.Client.ViewModels;
+using LudumDare50.Client.ViewModels.MiniGame;
 using Zenject;
 
 namespace LudumDare50.Client.States.MiniGame
@@ -18,7 +18,8 @@ namespace LudumDare50.Client.States.MiniGame
         Initialize,
         ClickABunchMiniGame,
         SpamPopupsMiniGame,
-        CaptchaMiniGame,
+        EnterPasswordMiniGame,
+        CollectApplesMiniGame,
     }
 
     public class MiniGameState : State

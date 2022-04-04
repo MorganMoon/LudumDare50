@@ -20,6 +20,11 @@ namespace LudumDare50.Client.ViewModels.ClickABunch
             _view.OnClosePopupButtonPressed(PopupIndex);
         }
 
+        public void OnWindowPressed()
+        {
+            transform.SetAsLastSibling();
+        }
+
         public class Factory : PlaceholderFactory<int, MiniGameSpamPopupsView, MiniGameSpamPopupsViewPopupEntry>
         {
 

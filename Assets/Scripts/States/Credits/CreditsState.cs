@@ -1,5 +1,6 @@
 ﻿using Cerberus;
 using LudumDare50.Client.Infrastructure;
+using LudumDare50.Client.ViewModels.Credits;
 
 namespace LudumDare50.Client.States.Credits
 {
@@ -19,7 +20,7 @@ namespace LudumDare50.Client.States.Credits
 
         public override void OnEnter()
         {
-            _screenService.ClearScreen();
+            _screenService.SetActiveScreen<CreditsViewModel>();
         }
     }
 }

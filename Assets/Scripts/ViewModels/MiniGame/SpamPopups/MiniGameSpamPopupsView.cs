@@ -15,7 +15,7 @@ namespace LudumDare50.Client.ViewModels.ClickABunch
 
         protected override void SetBindings()
         {
-            Bind<bool[]>((popups) => UpdateEntries(popups), nameof(ViewModel.ActivePopups));
+            Bind<bool[]>(UpdateEntries, nameof(ViewModel.ActivePopups));
         }
 
         public void OnClosePopupButtonPressed(int popupIndex)

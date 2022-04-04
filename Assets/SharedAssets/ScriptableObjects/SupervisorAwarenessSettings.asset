@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5758319af84fb44f5b8c59ca62897c43, type: 3}
-  m_Name: SleepSettings
+  m_Script: {fileID: 11500000, guid: 4cc4c8ce7a8e25b42aa44d054bee79b1, type: 3}
+  m_Name: SupervisorAwarenessSettings
   m_EditorClassIdentifier: 
-  StartingEnergy: 25
-  EnergySleepAdditionMultiplier: 0.4
-  EnergyAwakeSubtractionMultiplier: 1
-  CaughtAsleepForceAwakeTimeAmount: 3
-  CaughtAsleepEnergyPenalty: 0
+  MaxFailures: 0
+  NumberOfTasksToRecover: 0

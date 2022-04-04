@@ -23,6 +23,7 @@ namespace LudumDare50.Client.States.MiniGame
         EnterPasswordMiniGame,
         CollectApplesMiniGame,
         SelectWifiMiniGame,
+        CaptchaMiniGame,
     }
 
     public class MiniGameState : State

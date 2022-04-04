@@ -41,6 +41,11 @@ namespace LudumDare50.Client.ViewModels.GameOver
             _gameOverStateController.TriggerEvent(GameOverStateEvent.Continue);
         }
 
+        public void OnPlayAgainButtonPressed()
+        {
+            _gameOverStateController.TriggerEvent(GameOverStateEvent.PlayAgain);
+        }
+
         public class PrepareData
         {
             public TimeSpan TotalTime { get; set; }

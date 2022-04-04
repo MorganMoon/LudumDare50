@@ -9,7 +9,8 @@ namespace LudumDare50.Client.States.GameOver
 {
     public enum GameOverStateEvent
     {
-        Continue
+        Continue,
+        PlayAgain
     }
 
     public class GameOverState : State

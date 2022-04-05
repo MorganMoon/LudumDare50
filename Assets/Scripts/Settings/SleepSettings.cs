@@ -8,6 +8,7 @@ namespace LudumDare50.Client.Settings
         public float StartingEnergy;
         public float EnergySleepAdditionMultiplier;
         public float EnergyAwakeSubtractionMultiplier;
+        public float EnergyAwakeSubtractionTimeIncrease;
         public float CaughtAsleepForceAwakeTimeAmount;
         public float CaughtAsleepEnergyPenalty;
     }

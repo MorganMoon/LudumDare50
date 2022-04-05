@@ -1,5 +1,6 @@
 ﻿using LudumDare50.Client.Data;
 using LudumDare50.Client.Settings;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -14,15 +15,17 @@ namespace LudumDare50.Client.Game.Implementation
         public bool IsCaught => _wakeTimer > 0;
 
         private readonly SleepSettings _sleepSettings;
+        private readonly IGameTime _gameTime;
 
         private float _wakeTimer = 0;
         private bool _canSleep = true;
         private bool _isRunning = false;
 
         [Inject]
-        public SleepService(SleepSettings sleepSettings)
+        public SleepService(SleepSettings sleepSettings, IGameTime gameTime)
         {
             _sleepSettings = sleepSettings;
+            _gameTime = gameTime;
         }
 
         public void Start()
@@ -84,7 +87,9 @@ namespace LudumDare50.Client.Game.Implementation
             }
             else
             {
-                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - (Time.deltaTime * _sleepSettings.EnergyAwakeSubtractionMultiplier), 0));
+                var timeSinceStart = DateTime.UtcNow - _gameTime.StartTime;
+                var subtractionTimeIncrease = timeSinceStart.TotalSeconds * _sleepSettings.EnergyAwakeSubtractionTimeIncrease;
+                Energy = new Energy(Energy.Max, Mathf.Max(Energy.Current - (Time.deltaTime * (_sleepSettings.EnergyAwakeSubtractionMultiplier + (float)subtractionTimeIncrease)), 0));
 
                 if (_wakeTimer > 0)
                 {

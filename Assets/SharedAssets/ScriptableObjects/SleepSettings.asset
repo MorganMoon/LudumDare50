@@ -15,5 +15,6 @@ MonoBehaviour:
   StartingEnergy: 20
   EnergySleepAdditionMultiplier: 0.4
   EnergyAwakeSubtractionMultiplier: 1.1
+  EnergyAwakeSubtractionTimeIncrease: 0.001
   CaughtAsleepForceAwakeTimeAmount: 3
   CaughtAsleepEnergyPenalty: 0

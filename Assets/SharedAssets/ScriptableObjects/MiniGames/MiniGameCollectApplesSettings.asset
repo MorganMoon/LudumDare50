@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MiniGameCollectApplesSettings
   m_EditorClassIdentifier: 
   AppleAmount: 5
-  PlayerSpeed: 3
+  PlayerSpeed: 3.5

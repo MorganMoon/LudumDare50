@@ -24,7 +24,7 @@ namespace LudumDare50.Client.States.MainMenu
         public override void OnEnter()
         {
             var mainMenuViewModel = _screenService.SetActiveScreen<MainMenuViewModel>();
-            mainMenuViewModel.GameName = "Termination Notice";
+            mainMenuViewModel.GameName = "Termination Notice.";
         }
     }
 }
